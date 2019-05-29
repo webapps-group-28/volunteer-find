@@ -3,7 +3,6 @@
   <head></head>
   <body>
     <form id="searchForm" action="/projects/search/" method="GET">
-      <input type="number">
       <label for="minduration">Minimum duration</label>
       <input type="number" name="minduration">
       <label for="minduration">Maximum duration</label>
@@ -12,6 +11,7 @@
       <input type="number" name="maxdistance">
       <input type="hidden" name="latitude" id="latInput">
       <input type="hidden" name="longitude" id="longInput">
+      <input type="submit" value="Search for projects">
     </form>
     {% for project in projects %}
     <h1>{{ project.title }}</h1>
