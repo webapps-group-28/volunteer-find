@@ -27,20 +27,20 @@ def project_search(request):
     projects = models.Project.objects.all()
 
     minduration = None
-    if "minduration" in request.GET:
+    if "minduration" in request.GET and request.GET["minduration"]:
         minduration = float(request.GET["minduration"])
 
     maxduration = None
-    if "maxduration" in request.GET:
+    if "maxduration" in request.GET and request.GET["maxduration"]:
         maxduration = float(request.GET["maxduration"])
 
     maxdistance = None
-    if "maxdistance" in request.GET:
+    if "maxdistance" in request.GET and request.GET["maxdistance"]:
         maxdistance = float(request.GET["maxdistance"])
 
     latitude = None
     longitude = None
-    if "latitude" in request.GET:
+    if "latitude" in request.GET and request.GET["latitude"]:
         latitude = float(request.GET["latitude"])
         longitude = float(request.GET["longitude"])
 
