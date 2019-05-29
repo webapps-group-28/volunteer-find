@@ -5,4 +5,4 @@ def fun(x):
 
 class MyTest(unittest.TestCase):
     def test(self):
-        self.assertEqual(fun(3), 4)
+        self.assertEqual(fun(3), 5)
