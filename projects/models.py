@@ -1,13 +1,5 @@
 from django.db import models
 
- Title
--          Description
--          One organiser
--          Location
--          Type of volunteering
--          Duration
--          Date
-
 class Project(models.Model):
     title = models.CharField()
     description = models.TextField()
