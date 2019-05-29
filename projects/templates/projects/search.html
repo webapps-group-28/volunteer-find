@@ -21,11 +21,13 @@
     {% endfor %}
     <script src="/static/search.js"></script>
     <script>
-      if ("geolocation" in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          document.getElementsByName("latitude")[0].setAttribute("value", position.coords.latitude);
-          document.getElementsByName("longitude")[0].setAttribute("value", position.coords.longitude);
-        });
+      if (window.location.search.substr(1) == "") {
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementsByName("latitude")[0].setAttribute("value", position.coords.latitude);
+            document.getElementsByName("longitude")[0].setAttribute("value", position.coords.longitude);
+          });
+        }
       }
     </script>
   </body>
