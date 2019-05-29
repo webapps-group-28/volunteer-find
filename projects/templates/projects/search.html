@@ -9,8 +9,10 @@
       <input type="number" name="maxduration">
       <label for="maxdistance">Maximum distance</label>
       <input type="number" name="maxdistance">
-      <input type="number" name="latitude">
-      <input type="number" name="longitude">
+      <label for="latitude">Latitude</label>
+      <input type="number" name="latitude" value="51.498833">
+      <label for="longitude">Longitude</label>
+      <input type="number" name="longitude" value="-0.175113">
       <input type="submit" value="Search for projects">
     </form>
     {% for project in projects %}
