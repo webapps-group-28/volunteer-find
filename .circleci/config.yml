@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: circleci/python:3.6.4  # primary container for the build job
 
+  test:
     steps:
       - checkout
       - run: python test.py
