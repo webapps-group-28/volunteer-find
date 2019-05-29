@@ -47,3 +47,16 @@ def project_search(request):
     output = filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude)
 
     return render(request, "projects/search.html", { "projects": output })
+
+def create_project(request):
+    if request.method == "POST":
+        project = models.Project()
+        project.title = request.POST["title"]
+        project.description = request.POST["description"]
+        project.latitude = request.POST["latitude"]
+        project.longitude = request.POST["longitude"]
+        project.type = request.POST["type"]
+        project.duration = float(request.POST["duration"])
+        project.save()
+
+    return render(request, "projects/create.html")
