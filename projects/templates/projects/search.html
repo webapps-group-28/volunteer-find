@@ -20,5 +20,13 @@
     <p>{{ project.description }}</p>
     {% endfor %}
     <script src="/static/search.js"></script>
+    <script>
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          document.getElementsByName("latitude")[0].setAttribute("latitude", position.coords.latitude);
+          document.getElementsByName("longitude")[0].setAttribute("longitude", position.coords.longitude);
+        });
+      }
+    </script>
   </body>
 </html>
