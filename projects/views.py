@@ -46,7 +46,11 @@ def project_search(request):
 
     output = filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude)
 
-    return render(request, "projects/search.html", { "projects": output })
+    if latitude == None:
+        latitude = 51.498833
+        longitude = -0.175113
+
+    return render(request, "projects/search.html", { "projects": output, "latitude": latitude, "longitude": longitude })
 
 def create_project(request):
     if request.method == "POST":

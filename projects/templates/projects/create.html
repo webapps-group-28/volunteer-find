@@ -4,6 +4,7 @@
   <body>
     <h1>Create a new project</h1>
     <form id="creationForm" action="/projects/create/" method="POST">
+      {% csrf_token %}
       <label for="title">Title</label>
       <input type="text" name="title">
       <label for="description">Description</label>
