@@ -50,7 +50,7 @@ def project_search(request):
         latitude = 51.498833
         longitude = -0.175113
 
-    return render(request, "projects/search.html", { "projects": output, "latitude": latitude, "longitude": longitude })
+    return render(request, "projects/search.html", { "projects": output, "minduration": minduration, "maxduration": maxduration, "maxdistance": maxdistance, "latitude": latitude, "longitude": longitude })
 
 def create_project(request):
     if request.method == "POST":

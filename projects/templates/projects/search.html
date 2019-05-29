@@ -4,11 +4,11 @@
   <body>
     <form id="searchForm" action="/projects/search/" method="GET">
       <label for="minduration">Minimum duration</label>
-      <input type="number" name="minduration" value="{{ request.GET['minduration'] }}">
+      <input type="number" name="minduration" value="{{ minduration }}">
       <label for="minduration">Maximum duration</label>
-      <input type="number" name="maxduration" value="{{ request.GET['maxduration'] }}">
+      <input type="number" name="maxduration" value="{{ maxduration }}">
       <label for="maxdistance">Maximum distance</label>
-      <input type="number" name="maxdistance" value="{{ request.GET['maxdistance'] }}">
+      <input type="number" name="maxdistance" value="{{ maxdistance }}">
       <label for="latitude">Latitude</label>
       <input type="number" name="latitude" value="{{ latitude }}" step="0.000001">
       <label for="longitude">Longitude</label>
