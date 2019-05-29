@@ -8,12 +8,12 @@ def home(request):
 def project_search(request):
     projects = models.Project.objects.all()
     if "minduration" in request.GET:
-        minduration = request.GET.minduration
+        minduration = request.GET["minduration"]
     else:
         minduration = 0
 
     if "maxduration" in request.GET:
-        maxduration = request.GET.maxduration
+        maxduration = request.GET["maxduration"]
     else:
         maxduration = 1000
 
