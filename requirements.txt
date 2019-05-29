@@ -3,3 +3,4 @@ gunicorn
 Pillow
 whitenoise==3.2
 psycopg2
+geopy
