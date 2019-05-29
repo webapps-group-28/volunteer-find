@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import geopy.distance
 from . import models
+from django.contrib.auth.models import User
 
 def filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude):
     output = []
@@ -61,6 +62,7 @@ def create_project(request):
         project.longitude = request.POST["longitude"]
         project.type = request.POST["type"]
         project.duration = float(request.POST["duration"])
+        project.organiser = User.objects.all()[0]
         project.save()
 
     return render(request, "projects/create.html")
