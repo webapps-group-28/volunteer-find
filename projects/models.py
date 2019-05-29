@@ -8,3 +8,6 @@ class Project(models.Model):
     type = models.CharField(max_length=100)
     duration = models.FloatField()
     date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
