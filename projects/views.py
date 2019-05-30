@@ -63,9 +63,11 @@ def create_project(request):
         project.type = request.POST["type"]
         project.duration = float(request.POST["duration"])
         project.organiser = User.objects.all()[0]
+        project = project.save(commit=False)
+        project_id = project.id
         project.save()
 
-        return redirect("/")
+        return redirect("/projects/" + str(project_id) + "/")
 
 def view_project(request, project_id):
     project = Project.objects.get(pk=int(project_id))
