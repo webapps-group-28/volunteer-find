@@ -78,6 +78,7 @@ form input, textarea, button {
 textarea {
       resize: vertical;
       height: 100px;
+      min-height: 100px;
 }
 form input:focus, textarea:focus {
     border-color: rgb(0, 0, 0);
