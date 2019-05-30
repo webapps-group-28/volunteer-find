@@ -70,5 +70,5 @@ def create_project(request):
         return redirect("/projects/" + str(project.id) + "/")
 
 def view_project(request, project_id):
-    project = Project.objects.get(pk=int(project_id))
+    project = models.Project.objects.get(pk=int(project_id))
     return render("projects/project.html", project)
