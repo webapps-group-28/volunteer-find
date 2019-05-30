@@ -4,23 +4,28 @@ import geopy.distance
 from . import models
 from django.contrib.auth.models import User
 
-def filter_projects(projects, minduration, maxduration, maxdistance, latitude=51.498833, longitude=-0.175113):
+def filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude):
     output = []
+
+    if latitude == None:
+        latitude = 51.498833
+    if longitude == None:
+        longitude = -0.175113
+
     for project in projects:
         if minduration != None and project.duration < minduration:
             continue
         if maxduration != None and project.duration > maxduration:
             continue
 
-        if latitude != None:
-            user_location = (latitude, longitude)
-            project_location = (project.latitude, project.longitude)
-            distance = geopy.distance.distance(user_location, project_location).km
+        user_location = (latitude, longitude)
+        project_location = (project.latitude, project.longitude)
+        distance = geopy.distance.distance(user_location, project_location).km
 
-            if maxdistance != None and distance > maxdistance:
-                continue
+        if maxdistance != None and distance > maxdistance:
+            continue
 
-            project.distance = int(distance)
+        project.distance = int(distance)
 
         output.append(project)
     return output
