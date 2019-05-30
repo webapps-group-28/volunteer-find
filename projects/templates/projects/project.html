@@ -3,12 +3,29 @@
   <head>
     <title>{{ project.title }}</title>
     <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
     <link rel="stylesheet" href="/static/home.css">
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
   </head>
   <body>
     <h1>{{ project.title }}</h1>
     <p>{{ project.description }}</p>
     <p>Duration: {{ project.duration }} hrs</p>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+          new ol.layer.Tile({
+            source: new ol.source.OSM()
+          })
+        ],
+        view: new ol.View({
+          center: ol.proj.fromLonLat([{{ project.longitude }}, {{ project.latitude }}]),
+          zoom: 4
+        })
+      });
+    </script>
     <p><a href="/">Back to homepage</a></p>
   </body>
 </html>
