@@ -8,7 +8,7 @@ class Project(models.Model):
     longitude = models.FloatField()
     type = models.CharField(max_length=100)
     duration = models.FloatField()
-    start_date = models.DateField(auto_now_add=True)
+    start_date = models.DateField()
     end_date = models.DateField()
     organiser = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
