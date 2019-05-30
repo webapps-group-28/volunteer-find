@@ -22,16 +22,16 @@
         <h2>Search for Volunteering Projects</h2>
         <form id="searchForm" action="/" method="GET">
           {% csrf_token %}
-          <label for="minduration">Minimum duration</label>
-          <input type="number" name="minduration" value="{{ minduration }}">
-          <label for="minduration">Maximum duration</label>
-          <input type="number" name="maxduration" value="{{ maxduration }}">
-          <label for="maxdistance">Maximum distance</label>
-          <input type="number" name="maxdistance" value="{{ maxdistance }}">
-          <label for="latitude">Latitude</label>
-          <input type="number" name="latitude" value="{{ latitude }}" step="any">
-          <label for="longitude">Longitude</label>
-          <input type="number" name="longitude" value="{{ longitude }}" step="any">
+          <label for="minduration">Minimum duration</label> <br>
+          <input type="number" name="minduration" value="{{ minduration }}"> <br>
+          <label for="minduration">Maximum duration</label> <br>
+          <input type="number" name="maxduration" value="{{ maxduration }}"> <br>
+          <label for="maxdistance">Maximum distance</label> <br>
+          <input type="number" name="maxdistance" value="{{ maxdistance }}"> <br>
+          <label for="latitude">Latitude</label> <br>
+          <input type="number" name="latitude" value="{{ latitude }}" step="any"> <br>
+          <label for="longitude">Longitude</label> <br>
+          <input type="number" name="longitude" value="{{ longitude }}" step="any"> <br>
           <input type="submit" value="Search for projects">
         </form>
       </div>
@@ -39,18 +39,18 @@
         <h2>Create a new Project</h2>
         <form id="creationForm" action="/projects/create/" method="POST">
           {% csrf_token %}
-          <label for="title">Title</label>
-          <input type="text" name="title">
-          <label for="description">Description</label>
-          <textarea name="description"></textarea>
-          <label for="latitude">Latitude</label>
-          <input type="number" name="latitude">
-          <label for="longitude">Longitude</label>
-          <input type="number" name="longitude">
-          <label for="type">Type of volunteering</label>
-          <input type="text" name="type">
-          <label for="duration">Duration</label>
-          <input type="number" name="duration">
+          <label for="title">Title</label> <br>
+          <input type="text" name="title"> <br>
+          <label for="description">Description</label> <br>
+          <textarea name="description"></textarea> <br>
+          <label for="latitude">Latitude</label> <br>
+          <input type="number" name="latitude"> <br>
+          <label for="longitude">Longitude</label> <br>
+          <input type="number" name="longitude"> <br>
+          <label for="type">Type of volunteering</label> <br>
+          <input type="text" name="type"> <br>
+          <label for="duration">Duration</label> <br>
+          <input type="number" name="duration"> <br>
           <input type="submit" value="Create new project">
         </form>
       </div>
