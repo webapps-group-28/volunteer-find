@@ -53,6 +53,7 @@ def homepage(request):
         longitude = float(request.GET["longitude"])
 
     output = filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude)
+    output.sort(key=lambda project : project.distance)
 
     if latitude == None:
         latitude = 51.498833
