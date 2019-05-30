@@ -65,4 +65,4 @@ def create_project(request):
         project.organiser = User.objects.all()[0]
         project.save()
 
-        return render(request, "projects/create.html")
+        return render(request, "projects/home.html")
