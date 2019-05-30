@@ -63,7 +63,7 @@ def create_project(request):
         project.type = request.POST["type"]
         project.duration = float(request.POST["duration"])
         project.organiser = User.objects.all()[0]
-        project = project.save(commit=False)
+        project = project.save()
         project_id = project.id
         project.save()
 
