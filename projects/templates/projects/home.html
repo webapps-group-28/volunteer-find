@@ -14,6 +14,8 @@
         <h3><a href="{% url 'view_project' project_id=project.id %}">{{ project.title }}</a></h3>
         <p>{{ project.description }}</p>
         <p>{{ project.distance }} km</p>
+        <p>Start date: {{ project.start_date }}</p>
+        <p>End date: {{ project.end_date }}</p>
       </div>
       {% endfor %}
     </div>
@@ -24,9 +26,9 @@
         <h2>Search for Volunteering Projects</h2>
         <form id="searchForm" action="/" method="GET">
           {% csrf_token %}
-          <label for="minduration">Minimum duration (days)</label> <br>
+          <label for="minduration">Minimum duration (hrs)</label> <br>
           <input type="number" name="minduration" value="{{ minduration }}"> <br>
-          <label for="minduration">Maximum duration (days)</label> <br>
+          <label for="minduration">Maximum duration (hrs)</label> <br>
           <input type="number" name="maxduration" value="{{ maxduration }}"> <br>
           <label for="maxdistance">Maximum distance (km)</label> <br>
           <input type="number" name="maxdistance" value="{{ maxdistance }}"> <br>
