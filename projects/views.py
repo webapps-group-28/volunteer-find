@@ -71,4 +71,4 @@ def create_project(request):
 
 def view_project(request, project_id):
     project = models.Project.objects.get(pk=int(project_id))
-    return render("projects/project.html", { "project": project })
+    return render(request, "projects/project.html", { "project": project })
