@@ -75,6 +75,10 @@ form input, textarea, button {
     outline: none;
     width: 100%;
 }
+textarea {
+      resize: vertical;
+      height: 100px;
+}
 form input:focus, textarea:focus {
     border-color: rgb(0, 0, 0);
 }
