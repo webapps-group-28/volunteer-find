@@ -12,12 +12,12 @@ def filter_projects(projects, minduration, maxduration, maxdistance, latitude, l
         if maxduration != None and project.duration > maxduration:
             continue
 
-        if latitude != None and maxdistance != None:
+        if latitude != None:
             user_location = (latitude, longitude)
             project_location = (project.latitude, project.longitude)
             distance = geopy.distance.distance(user_location, project_location).km
 
-            if distance > maxdistance:
+            if maxdistance != None and distance > maxdistance:
                 continue
 
             project.distance = distance
