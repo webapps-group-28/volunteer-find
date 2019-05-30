@@ -22,11 +22,11 @@
         <h2>Search for Volunteering Projects</h2>
         <form id="searchForm" action="/" method="GET">
           {% csrf_token %}
-          <label for="minduration">Minimum duration</label> <br>
+          <label for="minduration">Minimum duration (days)</label> <br>
           <input type="number" name="minduration" value="{{ minduration }}"> <br>
-          <label for="minduration">Maximum duration</label> <br>
+          <label for="minduration">Maximum duration (days)</label> <br>
           <input type="number" name="maxduration" value="{{ maxduration }}"> <br>
-          <label for="maxdistance">Maximum distance</label> <br>
+          <label for="maxdistance">Maximum distance (km)</label> <br>
           <input type="number" name="maxdistance" value="{{ maxdistance }}"> <br>
           <label for="latitude">Latitude</label> <br>
           <input type="number" name="latitude" value="{{ latitude }}" step="any"> <br>
@@ -49,7 +49,7 @@
           <input type="number" name="longitude"> <br>
           <label for="type">Type of volunteering</label> <br>
           <input type="text" name="type"> <br>
-          <label for="duration">Duration</label> <br>
+          <label for="duration">Duration (days)</label> <br>
           <input type="number" name="duration"> <br>
           <input type="submit" value="Create new project">
         </form>
