@@ -24,7 +24,7 @@ def filter_projects(projects, minduration, maxduration, maxdistance, latitude, l
     return output
 
 
-def project_search(request):
+def homepage(request):
     projects = models.Project.objects.all()
 
     minduration = None
@@ -51,7 +51,7 @@ def project_search(request):
         latitude = 51.498833
         longitude = -0.175113
 
-    return render(request, "projects/search.html", { "projects": output, "minduration": minduration, "maxduration": maxduration, "maxdistance": maxdistance, "latitude": latitude, "longitude": longitude })
+    return render(request, "projects/home.html", { "projects": output, "minduration": minduration, "maxduration": maxduration, "maxdistance": maxdistance, "latitude": latitude, "longitude": longitude })
 
 def create_project(request):
     if request.method == "POST":
