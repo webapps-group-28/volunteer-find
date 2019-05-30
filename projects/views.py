@@ -65,4 +65,4 @@ def create_project(request):
         project.organiser = User.objects.all()[0]
         project.save()
 
-        return redirect(request, "/")
+        return redirect("/")
