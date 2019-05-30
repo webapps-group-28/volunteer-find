@@ -9,7 +9,7 @@ class Project(models.Model):
     type = models.CharField(max_length=100)
     duration = models.FloatField()
     start_date = models.DateField(auto_now_add=True)
-    end_date = models.DateField(auto_now_add=True)
+    end_date = models.DateField()
     organiser = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
