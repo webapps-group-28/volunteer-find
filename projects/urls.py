@@ -19,5 +19,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    url(r'^create/$', views.create_project)
+    url(r'^create/$', views.create_project),
+    url(r'^(?P<project_id>[\d]+)/$', views.view_project)
 ]

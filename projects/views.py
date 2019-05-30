@@ -66,3 +66,7 @@ def create_project(request):
         project.save()
 
         return redirect("/")
+
+def view_project(request, project_id):
+    project = Project.objects.get(pk=int(project_id))
+    return render("projects/project.html", project)
