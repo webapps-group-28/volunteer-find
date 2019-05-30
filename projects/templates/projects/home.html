@@ -3,6 +3,7 @@
   <head>
     <title>Volunteer Find</title>
     <meta name="viewport" content="width=device-width">
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/home.css">
   </head>
   <body>
@@ -12,7 +13,7 @@
       <div class="project">
         <h3><a href="{% url 'view_project' project_id=project.id %}">{{ project.title }}</a></h3>
         <p>{{ project.description }}</p>
-        <p>{{ project.distance }}</p>
+        <p>{{ project.distance }} km</p>
       </div>
       {% endfor %}
     </div>

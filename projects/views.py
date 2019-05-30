@@ -20,7 +20,7 @@ def filter_projects(projects, minduration, maxduration, maxdistance, latitude, l
             if maxdistance != None and distance > maxdistance:
                 continue
 
-            project.distance = distance
+            project.distance = int(distance)
 
         output.append(project)
     return output
