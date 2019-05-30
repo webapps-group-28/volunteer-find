@@ -50,3 +50,16 @@ class ProjectSearchTestCase(TestCase):
         self.assertTrue(projects[1] in output)
         self.assertTrue(projects[2] in output)
         self.assertTrue(projects[3] in output)
+
+    def testDurationFiltering(self):
+        output = views.filter_projects(projects, 1, 16, None, None, None)
+        self.assertTrue(projects[0] in output)
+        self.assertFalse(projects[1] in output)
+        self.assertFalse(projects[2] in output)
+        self.assertTrue(projects[3] in output)
+
+        output = views.filter_projects(projects, 0, 1, None, None, None)
+        self.assertFalse(projects[0] in output)
+        self.assertFalse(projects[1] in output)
+        self.assertFalse(projects[2] in output)
+        self.assertFalse(projects[3] in output)
