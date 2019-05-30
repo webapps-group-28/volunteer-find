@@ -105,3 +105,7 @@ form input[type="submit"]:active, button:active {
 #findButton {
     margin-right: 10%;
 }
+.map {
+    height: 400px;
+    width: 100%;
+}
