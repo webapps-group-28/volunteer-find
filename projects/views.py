@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 import geopy.distance
 from . import models
@@ -65,4 +65,4 @@ def create_project(request):
         project.organiser = User.objects.all()[0]
         project.save()
 
-        return render(request, "projects/home.html")
+        return redirect(request, "/")
