@@ -78,5 +78,5 @@ def create_project(request):
 
 def view_project(request, project_id):
     project = models.Project.objects.get(pk=int(project_id))
-    project.distance = int(project.distance)
+    project.duration = int(project.duration)
     return render(request, "projects/project.html", { "project": project })
