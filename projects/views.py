@@ -65,7 +65,7 @@ def create_project(request):
         project.organiser = User.objects.all()[0]
         project.save()
 
-        project = Project.objects.get(title=project.title)
+        project = models.Project.objects.get(title=project.title)
 
         return redirect("/projects/" + str(project.id) + "/")
 
