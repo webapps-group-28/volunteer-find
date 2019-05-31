@@ -5,7 +5,7 @@ jobs:
       - image: circleci/python:3.6.4  # primary container for the build job
     steps:
       - checkout
-      - run: pip install django
+      - run: sudo pip install django
 
   test:
     docker:
