@@ -1,10 +1,10 @@
-from django.test import TestCase
+from unittest import TestCase
 from . import models
 from . import views
 
-class ProjectSearchTestCase(TestCase):
-    projects = []
+projects = []
 
+class ProjectSearchTestCase(TestCase):
     def setUp(self):
         project = models.Project()
         project.title = "Clean up Hyde Park"
@@ -13,30 +13,34 @@ class ProjectSearchTestCase(TestCase):
         project.longitude = -0.166409
         project.type = "Environment"
         project.duration = 15.0
-
         projects.append(project)
+
+        project = models.Project()
         project.title = "Rebuild houses destroyed in natural disasters"
         project.description = "Recent earthquakes have destroyed homes."
         project.latitude = 39.849393
         project.longitude = 116.437558
         project.type = "Building"
         project.duration = 50
-
         projects.append(project)
+
+        project = models.Project()
         project.title = "Help locals in Africa"
         project.description = "Help them improve local infrastructure"
         project.latitude = -3.815922
         project.longitude = 20.380195
         project.type = "Infrastructure"
         project.duration = 45
-
         projects.append(project)
+
+        project = models.Project()
         project.title = "Teaching a language"
         project.description = "Help young children learn a new foreign language."
         project.latitude = 51.511241
         project.longitude = -0.109625
         project.type = "Education"
         project.duration = 10
+        projects.append(project)
 
     def testLocationFiltering(self):
         output = views.filter_projects(projects, None, None, 1, 51.507568, -0.166409)
