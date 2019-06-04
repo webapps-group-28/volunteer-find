@@ -15,8 +15,8 @@ def hours_to_level(hours):
 def view_user_profile(request, username):
     user = User.objects.get(username=username)
     user.awards = []
-    if hours_to_level(user.profile.total_hours) != "none":
-        user.awards.append(hours_to_level(user.profile.total_hours) + " overall")
+    if hours_to_level(user.profile.total_hours()) != "none":
+        user.awards.append(hours_to_level(user.profile.total_hours()) + " overall")
     if hours_to_level(user.profile.hours_environmental) != "none":
         user.awards.append(hours_to_level(user.profile.hours_environmental) + " environmental")
     if hours_to_level(user.profile.hours_social) != "none":
