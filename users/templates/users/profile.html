@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ user.username }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <h1>{{ user.get_full_name }}</h1>
+    <p>{{ user.bio }}</p>
+    {% if user.profile.email %}
+    <p>{{ user.profile.email }}</p>
+    {% endif %}
+    {% if user.profile.phone %}
+    <p>{{ user.profile.phone }}</p>
+    {% endif %}
+    <p>Duration: {{ uesr.profile.hours }} hrs</p>
+    <p><a href="/">Back to homepage</a></p>
+  </body>
+</html>
