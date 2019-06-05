@@ -23,7 +23,9 @@
     </div>
     <div id="panel">
       <button id="findButton">Find Projects</button>
+      {% if request.user.is_authenticated %}
       <button id="createButton">Create Project</button>
+      {% endif %}
       <div id="search">
         <h2>Search for Volunteering Projects</h2>
         <form id="searchForm" action="/" method="GET">
@@ -41,6 +43,7 @@
           <input type="submit" value="Search for projects">
         </form>
       </div>
+      {% if request.user.is_authenticated %}
       <div id="create">
         <h2>Create a new Project</h2>
         <form id="creationForm" action="/projects/create/" method="POST">
@@ -60,6 +63,7 @@
           <input type="submit" value="Create new project">
         </form>
       </div>
+      {% endif %}
     </div>
     <script src="/static/search.js"></script>
     <script>
