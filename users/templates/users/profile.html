@@ -19,7 +19,7 @@
     <h2>Awards</h2>
     <ul>
     {% for level, type in user.awards %}
-      <li><img src="/static/{{ level }}-{{ type }.gif">{{ level }} {{ type }} Award</li>
+      <li><img src="/static/{{ level }}-{{ type }}.gif">{{ level }} {{ type }} Award</li>
     {% endfor %}
     </ul>
     {% if request.user.username == user.username %}
