@@ -7,24 +7,24 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 def hours_to_level(hours):
     if hours <= 20:
-        return "none"
+        return None
     if hours <= 100:
-        return "bronze"
+        return "Bronze"
     if hours <= 200:
-        return "silver"
-    return "gold"
+        return "Silver"
+    return "Gold"
 
 def view_user_profile(request, username):
     user = User.objects.get(username=username)
     user.awards = []
-    if hours_to_level(user.profile.total_hours()) != "none":
-        user.awards.append(hours_to_level(user.profile.total_hours()) + " overall")
-    if hours_to_level(user.profile.hours_environmental) != "none":
-        user.awards.append(hours_to_level(user.profile.hours_environmental) + " environmental")
-    if hours_to_level(user.profile.hours_social) != "none":
-        user.awards.append(hours_to_level(user.profile.hours_social) + " social")
-    if hours_to_level(user.profile.hours_educational) != "none":
-        user.awards.append(hours_to_level(user.profile.hours_educational) + " educational")
+    if hours_to_level(user.profile.total_hours()) != None:
+        user.awards.append((hours_to_level(user.profile.total_hours()), "Commitment"))
+    if hours_to_level(user.profile.hours_environmental) != None:
+        user.awards.append((hours_to_level(user.profile.hours_environmental), "Environmental"))
+    if hours_to_level(user.profile.hours_social) != None:
+        user.awards.append((hours_to_level(user.profile.hours_social), "Social"))
+    if hours_to_level(user.profile.hours_educational) != None:
+        user.awards.append((hours_to_level(user.profile.hours_educational), "Educational"))
 
     return render(request, "users/profile.html", { "user": user })
 
