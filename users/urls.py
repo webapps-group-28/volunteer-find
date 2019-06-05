@@ -19,5 +19,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    url(r'^(?P<username>[\w-]+)/$', views.view_user_profile, name="view_user_profile")
+    url(r'^(?P<username>[\w-]+)/$', views.view_user_profile, name="view_user_profile"),
+    url(r'^login/$', views.login_view)
 ]
