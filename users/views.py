@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from . import models
 from django.contrib.auth.models import User
@@ -38,3 +38,14 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, "users/login.html", {"form": form})
+
+def signup_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            login(request, user)
+            return redirect("/")
+    else:
+        form = UserCreationForm()
+    return render(request, "users/signup.html", {"form": form})

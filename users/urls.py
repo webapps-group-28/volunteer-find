@@ -20,5 +20,6 @@ from . import views
 
 urlpatterns = [
     url(r'^login/$', views.login_view),
+    url(r'^signup/$', views.signup_view),
     url(r'^(?P<username>[\w-]+)/$', views.view_user_profile, name="view_user_profile")
 ]
