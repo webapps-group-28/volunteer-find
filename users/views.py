@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from . import models
 from django.contrib.auth.models import User
 from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 def hours_to_level(hours):
     if hours <= 20:
