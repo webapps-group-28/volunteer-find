@@ -50,6 +50,7 @@ def signup_view(request):
                 user.profile.email = request.POST["email"]
             if "phone" in request.POST:
                 user.profile.phone = request.POST["phone"]
+            user.profile.type = request.POST["type"]
             login(request, user)
             return redirect("/")
     else:

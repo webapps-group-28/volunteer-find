@@ -11,6 +11,7 @@ class Profile(models.Model):
     hours_environmental = models.IntegerField(default=0)
     hours_social = models.IntegerField(default=0)
     hours_educational = models.IntegerField(default=0)
+    type = models.CharField(max_length=20, default="individual")
 
     def __str__(self):
         return self.user.username
