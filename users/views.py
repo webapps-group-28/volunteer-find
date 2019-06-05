@@ -52,7 +52,7 @@ def signup_view(request):
                 user.profile.phone = request.POST["phone"]
             user.profile.type = request.POST["type"]
             login(request, user)
-            return redirect("/")
+            return redirect("view_user_profile", username=user.username)
     else:
         form = UserCreationForm()
     return render(request, "users/signup.html", {"form": form})
