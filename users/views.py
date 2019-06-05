@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from . import models
 from django.contrib.auth.models import User
+from django.contrib.auth import login
 
 def hours_to_level(hours):
     if hours <= 20:
@@ -25,3 +26,14 @@ def view_user_profile(request, username):
         user.awards.append(hours_to_level(user.profile.hours_educational) + " educational")
 
     return render(request, "users/profile.html", { "user": user })
+
+def login_view(request):
+    if request.method == "POST":
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect("/")
+    else:
+        form = AuthenticationForm()
+    return render(request, "users/login.html", {"form": form})
