@@ -3,6 +3,10 @@ body {
     font-family: 'Karla', sans-serif;
 }
 
+ul {
+    list-style: none;
+}
+
 #projects, #panel {
     float: left;
 }
