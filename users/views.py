@@ -44,6 +44,10 @@ def signup_view(request):
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
             user = form.save()
+            if "firstname" in request.POST:
+                user.first_name = request.POST["firstname"]
+            if "lastname" in request.POST:
+                user.last_name = request.POST["lastname"]
             if "bio" in request.POST:
                 user.profile.bio = request.POST["bio"]
             if "email" in request.POST:

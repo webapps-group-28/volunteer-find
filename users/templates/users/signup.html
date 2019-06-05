@@ -9,6 +9,8 @@
     <form action="/users/signup/" method="POST">
       {% csrf_token %}
       {{ form }}<br>
+      First name: <input type="text" name="firstname"><br>
+      Last name: <input type="text" name="lastname"><br>
       Type of user:
       <select name="type">
         <option value="individual">Individual</option>
