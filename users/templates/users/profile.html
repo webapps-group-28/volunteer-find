@@ -21,6 +21,9 @@
       <li>{{ award }}</li>
     {% endfor %}
     </ul>
+    {% if request.user.username == user.username %}
+    <p><a href="/users/edit-profile"></a></p>
+    {% endif %}
     <p><a href="/">Back to homepage</a></p>
   </body>
 </html>
