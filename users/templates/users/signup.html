@@ -9,6 +9,11 @@
     <form action="/users/signup/" method="POST">
       {% csrf_token %}
       {{ form }}<br>
+      Type of user:
+      <select name="type">
+        <option value="individual">Individual</option>
+        <option value="organisation">Organisation</option>
+      </select><br>
       <textarea name="bio" placeholder="Enter a short bio here"></textarea><br>
       Email: <input type="email" name="email"><br>
       Phone number: <input type="text" name="phone"><br>
