@@ -75,6 +75,11 @@ form input, textarea, button {
     outline: none;
     width: 100%;
 }
+
+form input, textarea {
+    padding-left: 10px;
+}
+
 textarea {
       resize: vertical;
       height: 100px;
