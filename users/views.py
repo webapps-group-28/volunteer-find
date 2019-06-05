@@ -43,7 +43,13 @@ def signup_view(request):
     if request.method == "POST":
         form = UserCreationForm(data=request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            if "bio" in request.POST:
+                user.profile.bio = request.POST["bio"]
+            if "email" in request.POST:
+                user.profile.email = request.POST["email"]
+            if "phone" in request.POST:
+                user.profile.phone = request.POST["phone"]
             login(request, user)
             return redirect("/")
     else:

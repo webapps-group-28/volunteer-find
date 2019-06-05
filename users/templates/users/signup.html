@@ -8,8 +8,10 @@
     <h1>Create a new account</h1>
     <form action="/users/signup/" method="POST">
       {% csrf_token %}
-      {{ form }}
-      <input type="submit" value="Sign up">
+      {{ form }}<br>
+      <textarea name="bio" placeholder="Enter a short bio here"></textarea><br>
+      Email: <input type="email" name="email"><br>
+      Phone number: <input type="text" name="Phone">
     </form>
     <p><a href="/">Back to homepage</a></p>
   </body>
