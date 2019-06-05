@@ -55,6 +55,7 @@ def signup_view(request):
             if "phone" in request.POST:
                 user.profile.phone = request.POST["phone"]
             user.profile.type = request.POST["type"]
+            user.save()
             login(request, user)
             return redirect("view_user_profile", username=user.username)
     else:
