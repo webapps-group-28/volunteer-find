@@ -5,12 +5,16 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
+BRONZE_HOURS = 20
+SILVER_HOURS = 100
+GOLD_HOURS = 200
+
 def hours_to_level(hours):
-    if hours <= 20:
+    if hours <= BRONZE_HOURS:
         return None
-    if hours <= 100:
+    if hours <= SILVER_HOURS:
         return "Bronze"
-    if hours <= 200:
+    if hours <= GOLD_HOURS:
         return "Silver"
     return "Gold"
 
@@ -26,7 +30,7 @@ def view_user_profile(request, username):
     if hours_to_level(user.profile.hours_educational) != None:
         user.awards.append((hours_to_level(user.profile.hours_educational), "Educational"))
 
-    return render(request, "users/profile.html", { "user": user })
+    return render(request, "users/profile.html", { "user": user, "BRONZE_HOURS": BRONZE_HOURS, "SILVER_HOURS", SILVER_HOURS, "GOLD_HOURS", GOLD_HOURS })
 
 def login_view(request):
     if request.method == "POST":
