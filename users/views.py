@@ -4,7 +4,7 @@ from . import models
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from projects import project_models
+from projects import models as project_models
 
 BRONZE_HOURS = 20
 SILVER_HOURS = 100
