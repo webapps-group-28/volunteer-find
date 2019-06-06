@@ -9,7 +9,7 @@
   <body>
     <h1>{{ group.name }}</h1>
     <p>{{ group.description }}</p>
-    <p>Admin: {{ group.admin.username }}</p>
+    <p>Admin: <a href="{% url 'view_user_profile' username=group.admin.username %}>"{{ group.admin.username }}</a></p>
     <p>Date created: {{ group.date_created }}</p>
 
     <h2>Members</h2>
