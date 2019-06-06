@@ -120,8 +120,7 @@ form input[type="submit"]:active, button:active {
 }
 
 #tier {
-    border-width: 2px;
-    border-style: solid;
+    border: 2px solid rgb(184, 187, 193);
     border-radius: 10px;
     padding: 10px;
     width: 20%;
@@ -129,6 +128,7 @@ form input[type="submit"]:active, button:active {
 
 #tier span {
     font-size: 30px;
+    color: rgb(184, 187, 193);
 }
 
 progress[value] {
@@ -140,9 +140,19 @@ progress[value] {
 }
 
 progress[value]::-webkit-progress-bar {
+    background-color: rgb(255, 255, 255);
     border: 2px solid rgb(0, 0, 0);
 }
 
 progress[value]::-moz-progress-bar {
+    background-color: rgb(255, 255, 255);
     border: 2px solid rgb(0, 0, 0);
+}
+
+progress[value]::-moz-progress-value {
+    background-color: rgb(255, 201, 87);
+}
+
+progress[value]::-webkit-progress-value {
+    background-color: rgb(255, 201, 87);
 }
