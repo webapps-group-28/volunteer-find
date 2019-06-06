@@ -34,6 +34,8 @@ def filter_projects(projects, minduration, maxduration, maxdistance, latitude, l
 
 def homepage(request):
     projects = models.Project.objects.all()
+    for project in projects:
+        project.duration = int(project.duration)
 
     minduration = None
     if "minduration" in request.GET and request.GET["minduration"]:
