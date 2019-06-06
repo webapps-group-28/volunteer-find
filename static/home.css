@@ -149,26 +149,26 @@ progress[value]::-moz-progress-bar {
     border: 2px solid rgb(0, 0, 0);
 }
 
-progress[value]::-moz-progress-value.bronze {
+progress.bronze[value]::-moz-progress-value {
     background-color: #cd7f32;
 }
 
-progress[value]::-webkit-progress-value.bronze {
+progress.bronze[value]::-webkit-progress-value {
     background-color: #cd7f32;
 }
 
-progress[value]::-moz-progress-value.silver {
+progress.silver[value]::-moz-progress-value {
     background-color: #C0C0C0;
 }
 
-progress[value]::-webkit-progress-value.silver {
+progress.silver[value]::-webkit-progress-value {
     background-color: #C0C0C0;
 }
 
-progress[value]::-moz-progress-value.gold {
+progress.gold[value]::-moz-progress-value {
     background-color: #FFD700;
 }
 
-progress[value]::-webkit-progress-value.gold {
+progress.gold[value]::-webkit-progress-value {
     background-color: #FFD700;
 }
