@@ -20,7 +20,10 @@ def hours_to_level(hours):
     return "Gold"
 
 def leaderboard(request):
-    users = User.objects.all()
+    users = []
+    for user in Users.objects.all():
+        users.append(user)
+        
     users.sort(key=lambda user : user.total_hours(), reverse=True)
     return render(request, "/users/leaderboard.html", {"users": users})
 
