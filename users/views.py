@@ -25,7 +25,7 @@ def leaderboard(request):
         users.append(user)
 
     users.sort(key=lambda user : user.profile.total_hours(), reverse=True)
-    return render(request, "/users/leaderboard.html", {"users": users})
+    return render(request, "users/leaderboard.html", {"users": users})
 
 def my_groups(request, username):
     group_membership = models.GroupMember.objects.all()
