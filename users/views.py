@@ -22,7 +22,11 @@ def hours_to_level(hours):
 def create_group(request):
     if request.method == "GET":
         return render(request, "users/create-group.html")
-    
+    new_group = models.Group()
+    new_group.name = request.POST["name"]
+    new_group.description = request.POST["description"]
+    new_group.admin = request.user
+    new_group.save()
 
 def view_user_profile(request, username):
     user = User.objects.get(username=username)
