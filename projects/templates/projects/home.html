@@ -8,7 +8,9 @@
   </head>
   <body>
     <p>{% if not request.user.is_authenticated %}<a href="/users/login/">Login</a><br><a href="/users/signup/">Sign up</a>{% endif %}{% if request.user.is_authenticated %}<a href="/users/logout/">Logout</a>{% endif %}</p>
+    {% if request.user.is_authenticated %}
     <p><a href="{% url 'view_user_profile' username=request.user.username %}">My Profile</a></p>
+    {% endif %}
     <h1>Volunteer Find</h1>
     <div id="projects">
       {% for project in projects %}
