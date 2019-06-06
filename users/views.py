@@ -39,6 +39,17 @@ def view_user_profile(request, username):
 
     return render(request, "users/profile.html", { "user": user, "BRONZE_HOURS": BRONZE_HOURS, "SILVER_HOURS": SILVER_HOURS, "GOLD_HOURS": GOLD_HOURS })
 
+def view_group_profile(request, group_id):
+    group = models.Group.objects.get(pk=int(group_id))
+    group_membership = models.GroupMember.objects.all()
+    group.members = []
+    for entry in group_membership:
+        if int(entry.group.id) == int(group_id):
+            group.members.append(entry.user)
+    group.num_members = len(group.members)
+
+    return render(request, "users/group.html", { "grpup": group })
+
 def login_view(request):
     if request.method == "POST":
         form = AuthenticationForm(data=request.POST)
