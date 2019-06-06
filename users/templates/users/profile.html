@@ -17,21 +17,31 @@
     {% endif %}
 
     <h2>Current Tier:</h2>
-    <div id="tier">
-      {% if user.profile.total_hours <= BRONZE_HOURS %}
-        <span>ROOKIE Tier</span><br>
-      {% endif %}
-      {% if user.profile.total_hours <= SILVER_HOURS and user.profile.total_hours > BRONZE_HOURS %}
-        <span>BRONZE Tier</span><br>
-      {% endif %}
-      {% if user.profile.total_hours <= GOLD_HOURS and user.profile.total_hours > SILVER_HOURS %}
-        <span>SILVER Tier</span><br>
-      {% endif %}
-      {% if user.profile.total_hours > GOLD_HOURS %}
-        <span>GOLD Tier</span><br>
-      {% endif %}
+    {% if user.profile.total_hours <= BRONZE_HOURS %}
+    <div id="tier" style="border-color: black">
+      <span style="color: black">ROOKIE Tier</span><br>
       Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
     </div>
+    {% endif %}
+    {% if user.profile.total_hours <= SILVER_HOURS and user.profile.total_hours > BRONZE_HOURS %}
+    <div id="tier" style="border-color: bronze">
+      <span style="color: bronze">BRONZE Tier</span>
+      Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
+    </div>
+    {% endif %}
+    {% if user.profile.total_hours <= GOLD_HOURS and user.profile.total_hours > SILVER_HOURS %}
+    <div id="tier" style="border-color: silver">
+      <span style="color: silver">SILVER Tier</span>
+      Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
+    </div>
+    {% endif %}
+    {% if user.profile.total_hours > GOLD_HOURS %}
+    <div id="tier" style="border-color: gold">
+      <span style="color: gold">GOLD Tier</span>
+      Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
+    </div>
+    {% endif %}
+
     <h2>Progress until next tier:</h2>
     Only <b>{{ user.profile.total_hours }} hours</b> away from <b>GOLD Tier</b>.<br><br>
     SILVER <progress max="100" value="60"></progress> GOLD
