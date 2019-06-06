@@ -21,3 +21,10 @@ class Volunteer(models.Model):
 
     def __str__(self):
         return self.user.first_name + " " + self.user.last_name + " " + self.project.title
+
+class CompletedProject(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return self.user.first_name + " " + self.user.last_name + " " + self.project.title
