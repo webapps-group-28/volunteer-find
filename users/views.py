@@ -48,7 +48,7 @@ def view_group_profile(request, group_id):
             group.members.append(entry.user)
     group.num_members = len(group.members)
 
-    return render(request, "users/group.html", { "grpup": group })
+    return render(request, "users/group.html", { "group": group })
 
 def login_view(request):
     if request.method == "POST":
