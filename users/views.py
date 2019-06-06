@@ -27,6 +27,8 @@ def create_group(request):
     new_group.description = request.POST["description"]
     new_group.admin = request.user
     new_group.save()
+    new_group = models.Group.objects.get(name=new_group.name)
+    return redirect("view_group_profile", group_id=new_group.id)
 
 def view_user_profile(request, username):
     user = User.objects.get(username=username)
