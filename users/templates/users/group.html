@@ -12,11 +12,14 @@
     <p>Admin: <a href="{% url 'view_user_profile' username=group.admin.username %}">{{ group.admin.get_full_name }}</a></p>
     <p>Date created: {{ group.date_created }}</p>
 
+    <p><a href="/">Back to homepage</a></p>
+
     <h2>Members</h2>
     <ul>
       {% for member in group.members %}
         <li><a href="{% url 'view_user_profile' username=member.username %}">{{ member.get_full_name }}</a></li>
       {% endfor %}
     </ul>
+    <p></p>
   </body>
 </html>
