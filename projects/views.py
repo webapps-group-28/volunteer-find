@@ -86,7 +86,7 @@ def view_project(request, project_id):
     project.volunteers = []
     volunteerEntries = models.Volunteer.objects.all()
     for entry in volunteerEntries:
-        if entry.project.id == project_id:
+        if int(entry.project.id) == int(project_id):
             project.volunteers.append(entry.user)
     project.num_volunteers = len(project.volunteers)
     return render(request, "projects/project.html", { "project": project })
