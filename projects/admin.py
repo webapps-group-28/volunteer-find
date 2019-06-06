@@ -3,3 +3,4 @@ from . import models
 
 admin.site.register(models.Project)
 admin.site.register(models.Volunteer)
+admin.site.register(models.CompletedProject)
