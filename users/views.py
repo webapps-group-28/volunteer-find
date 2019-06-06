@@ -30,7 +30,7 @@ def view_user_profile(request, username):
     if hours_to_level(user.profile.hours_educational) != None:
         user.awards.append((hours_to_level(user.profile.hours_educational), "Educational"))
 
-    return render(request, "users/profile.html", { "user": user, "BRONZE_HOURS": BRONZE_HOURS, "SILVER_HOURS": SILVER_HOURS: "GOLD_HOURS": GOLD_HOURS })
+    return render(request, "users/profile.html", { "user": user, "BRONZE_HOURS": BRONZE_HOURS, "SILVER_HOURS": SILVER_HOURS, "GOLD_HOURS": GOLD_HOURS })
 
 def login_view(request):
     if request.method == "POST":
