@@ -32,10 +32,13 @@
       });
     </script>
     <p><a href="/">Back to homepage</a></p>
+    {% if project.num_volunteers > 0 %}
+    <h2>Volunteers who have already signed up</h2>
     <ul>
       {% for user in project.volunteers %}
       <li><a href="{% url 'view_user_profile' username=user.username %}">{{ user.get_full_name }}</a></li>
       {% endfor %}
     </ul>
+    {% endif %}
   </body>
 </html>
