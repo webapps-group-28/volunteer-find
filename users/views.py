@@ -19,6 +19,14 @@ def hours_to_level(hours):
         return "Silver"
     return "Gold"
 
+def my_groups(request, username):
+    group_membership = models.GroupMember.objects.all()
+    groups = []
+    for entry in group_membership:
+        if entry.user.username == username:
+            groups.append(entry.group)
+    return render(request, "users/my-groups.html", {"groups": groups})
+
 def create_group(request):
     if request.method == "GET":
         return render(request, "users/create-group.html")
