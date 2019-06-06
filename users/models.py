@@ -27,3 +27,19 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
+
+class Group(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.TextField(max_length=500, blank=True)
+    admin = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    date_created = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+class GroupMember(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return self.user.username + " " + self.group.name
