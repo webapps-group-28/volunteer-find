@@ -45,13 +45,13 @@ def view_user_profile(request, username):
         user.color = "bronze"
     elif user.profile.total_hours() <= SILVER_HOURS:
         user.hours_difference = SILVER_HOURS - user.profile.total_hours()
-        user.progress_value = (user.profile.total_hours() - BRONZE_HOURS) / (SILVER_HOURS - BRONZE_HOURS)
+        user.progress_value = int((user.profile.total_hours() - BRONZE_HOURS) / (SILVER_HOURS - BRONZE_HOURS) * 100)
         user.word_left = "BRONZE"
         user.word_right = "SILVER"
         user.color = "silver"
     elif user.profile.total_hours() <= GOLD_HOURS:
         user.hours_difference = GOLD_HOURS - user.profile.total_hours()
-        user.progress_value = (user.profile.total_hours() - SILVER_HOURS) / (GOLD_HOURS - SILVER_HOURS)
+        user.progress_value = int((user.profile.total_hours() - SILVER_HOURS) / (GOLD_HOURS - SILVER_HOURS) * 100)
         user.word_left = "SILVER"
         user.word_right = "GOLD"
         user.color = "gold"
