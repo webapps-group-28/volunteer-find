@@ -43,8 +43,8 @@
     {% endif %}
 
     <h2>Progress until next tier:</h2>
-    Only <b>30 hours</b> away from <b>GOLD Tier</b>.<br><br>
-    SILVER <progress max="100" value="60"></progress> GOLD
+    Only <b>{{ user.hours_difference }} hours</b> away from <b>{{ user.word_right }} Tier</b>.<br><br>
+    {{ user.word_left }} <progress style="background-color: {{ user.color }}" max="100" value="{{ user.progress_value }}"></progress> {{ user.word_right }}
 
     <h2>Awards</h2>
     <ul>

@@ -15,6 +15,7 @@
     <p><a href="/">Back to homepage</a></p>
 
     <h2>Members</h2>
+    <p>{{ group.num_members }} members in total</p>
     <ul>
       {% for member in group.members %}
         <li><a href="{% url 'view_user_profile' username=member.username %}">{{ member.get_full_name }}</a></li>
