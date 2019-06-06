@@ -11,9 +11,11 @@
     <h1>{{ project.title }}</h1>
     <p><em>{{ project.type }}</em></p>
     <p>{{ project.description }}</p>
-    <p>Duration: {{ project.duration }} hrs</p>
     <p>Start date: {{ project.start_date }}</p>
     <p>End date: {{ project.end_date }}</p>
+    <p>Estimated hours of work: {{ project.duration }} hrs</p>
+    <p>{{ project.num_volunteers }} volunteers have joined this project</p>
+    <p><a href="#">Join this project</a></p>
     <div id="map" class="map"></div>
     <script type="text/javascript">
       var map = new ol.Map({
@@ -30,5 +32,10 @@
       });
     </script>
     <p><a href="/">Back to homepage</a></p>
+    <ul>
+      {% for user in project.volunteers %}
+      <li><a href="{% url 'view_user_profile' username=user.username %}">{{ user.get_full_name }}</a></li>
+      {% endfor %}
+    </ul>
   </body>
 </html>
