@@ -24,19 +24,19 @@
     </div>
     {% endif %}
     {% if user.profile.total_hours <= SILVER_HOURS and user.profile.total_hours > BRONZE_HOURS %}
-    <div id="tier" style="border-color: bronze">
+    <div id="tier" style="border-color: #cd7f32">
       <span style="color: bronze">BRONZE Tier</span><br>
       Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
     </div>
     {% endif %}
     {% if user.profile.total_hours <= GOLD_HOURS and user.profile.total_hours > SILVER_HOURS %}
-    <div id="tier" style="border-color: silver">
+    <div id="tier" style="border-color: #C0C0C0">
       <span style="color: silver">SILVER Tier</span><br>
       Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
     </div>
     {% endif %}
     {% if user.profile.total_hours > GOLD_HOURS %}
-    <div id="tier" style="border-color: gold">
+    <div id="tier" style="border-color: #FFD700">
       <span style="color: gold">GOLD Tier</span><br>
       Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
     </div>
@@ -44,7 +44,7 @@
 
     <h2>Progress until next tier:</h2>
     Only <b>{{ user.hours_difference }} hours</b> away from <b>{{ user.word_right }} Tier</b>.<br><br>
-    {{ user.word_left }} <progress style="background-color: {{ user.color }}" max="100" value="{{ user.progress_value }}"></progress> {{ user.word_right }}
+    {{ user.word_left }} <progress class="{{ user.color }}" max="100" value="{{ user.progress_value }}"></progress> {{ user.word_right }}
 
     <h2>Awards</h2>
     <ul>

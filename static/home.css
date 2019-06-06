@@ -149,10 +149,26 @@ progress[value]::-moz-progress-bar {
     border: 2px solid rgb(0, 0, 0);
 }
 
-progress[value]::-moz-progress-value {
-    background-color: rgb(255, 201, 87);
+progress[value]::-moz-progress-value.bronze {
+    background-color: #cd7f32;
 }
 
-progress[value]::-webkit-progress-value {
-    background-color: rgb(255, 201, 87);
+progress[value]::-webkit-progress-value.bronze {
+    background-color: #cd7f32;
+}
+
+progress[value]::-moz-progress-value.silver {
+    background-color: #C0C0C0;
+}
+
+progress[value]::-webkit-progress-value.silver {
+    background-color: #C0C0C0;
+}
+
+progress[value]::-moz-progress-value.gold {
+    background-color: #FFD700;
+}
+
+progress[value]::-webkit-progress-value.gold {
+    background-color: #FFD700;
 }
