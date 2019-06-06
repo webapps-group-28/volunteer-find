@@ -25,19 +25,19 @@
     {% endif %}
     {% if user.profile.total_hours <= SILVER_HOURS and user.profile.total_hours > BRONZE_HOURS %}
     <div id="tier" style="border-color: bronze">
-      <span style="color: bronze">BRONZE Tier</span>
+      <span style="color: bronze">BRONZE Tier</span><br>
       Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
     </div>
     {% endif %}
     {% if user.profile.total_hours <= GOLD_HOURS and user.profile.total_hours > SILVER_HOURS %}
     <div id="tier" style="border-color: silver">
-      <span style="color: silver">SILVER Tier</span>
+      <span style="color: silver">SILVER Tier</span><br>
       Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
     </div>
     {% endif %}
     {% if user.profile.total_hours > GOLD_HOURS %}
     <div id="tier" style="border-color: gold">
-      <span style="color: gold">GOLD Tier</span>
+      <span style="color: gold">GOLD Tier</span><br>
       Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
     </div>
     {% endif %}
