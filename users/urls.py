@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^login/$', views.login_view),
     url(r'^signup/$', views.signup_view),
     url(r'^logout/$', views.logout_view),
+    url(r'^groups/create/$', views.create_group),
     url(r'^groups/(?P<group_id>[\d]+)/$', views.view_group_profile, name="view_group_profile"),
     url(r'^(?P<username>[\w-]+)/$', views.view_user_profile, name="view_user_profile")
 ]

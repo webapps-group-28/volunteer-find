@@ -19,6 +19,11 @@ def hours_to_level(hours):
         return "Silver"
     return "Gold"
 
+def create_group(request):
+    if request.method == "GET":
+        return render(request, "users/create-group.html")
+    
+
 def view_user_profile(request, username):
     user = User.objects.get(username=username)
     user.awards = []

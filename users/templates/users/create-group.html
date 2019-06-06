@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Create a new group</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/home.css">
+  </head>
+  <body>
+    <h1>Create a new group</h1>
+    <form action="/users/groups/create/" method="POST">
+      {% csrf_token %}
+      Group name: <input type="text" name="firstname"><br>
+      Group description:
+      <textarea name="bio" placeholder="Enter a short bio here"></textarea><br>
+      
+      <input type="submit" value="Signup">
+    </form>
+    <p><a href="/">Back to homepage</a></p>
+  </body>
+</html>
