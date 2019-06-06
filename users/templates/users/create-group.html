@@ -9,10 +9,9 @@
     <h1>Create a new group</h1>
     <form action="/users/groups/create/" method="POST">
       {% csrf_token %}
-      Group name: <input type="text" name="firstname"><br>
-      Group description:
-      <textarea name="bio" placeholder="Enter a short bio here"></textarea><br>
-      
+      Group name: <input type="text" name="name"><br>
+      <textarea name="description" placeholder="Enter a description here"></textarea><br>
+
       <input type="submit" value="Signup">
     </form>
     <p><a href="/">Back to homepage</a></p>
