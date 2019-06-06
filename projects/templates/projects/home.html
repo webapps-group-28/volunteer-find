@@ -8,6 +8,7 @@
   </head>
   <body>
     <p>{% if not request.user.is_authenticated %}<a href="/users/login/">Login</a><br><a href="/users/signup/">Sign up</a>{% endif %}{% if request.user.is_authenticated %}<a href="/users/logout/">Logout</a>{% endif %}</p>
+    <p><a href="{% url 'view_user_profile' username=request.user.username %}">My Profile</a></p>
     <h1>Volunteer Find</h1>
     <div id="projects">
       {% for project in projects %}
@@ -21,11 +22,12 @@
       </div>
       {% endfor %}
     </div>
+    {% if request.user.is_authenticated %}
     <div id="panel">
       <button id="findButton">Find Projects</button>
-      {% if request.user.is_authenticated %}
+
       <button id="createButton">Create Project</button>
-      {% endif %}
+
       <div id="search">
         <h2>Search for Volunteering Projects</h2>
         <form id="searchForm" action="/" method="GET">
@@ -43,7 +45,6 @@
           <input type="submit" value="Search for projects">
         </form>
       </div>
-      {% if request.user.is_authenticated %}
       <div id="create">
         <h2>Create a new Project</h2>
         <form id="creationForm" action="/projects/create/" method="POST">
@@ -63,8 +64,8 @@
           <input type="submit" value="Create new project">
         </form>
       </div>
-      {% endif %}
     </div>
+    {% endif %}
     <script src="/static/search.js"></script>
     <script>
       if (window.location.search.substr(1) == "") {
