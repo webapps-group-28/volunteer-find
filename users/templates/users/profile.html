@@ -33,8 +33,18 @@
         Over <b>{{ user.profile.total_hours }} hours</b> logged so far!
     </div>
     <h2>Progress until next tier:</h2>
-    Only <b>25 hours</b> away from <b>GOLD Tier</b>.<br><br>
-    SILVER <progress max="100" value="60"></progress> GOLD
+    {% if user.profile.total_hours <= BRONZE_HOURS %}
+    Only <b>{{ BRONZE_HOURS - user.profile.total_hours }} hours</b> away from <b>BRONZE Tier</b>.<br><br>
+    ROOKIE <progress max="100" value="{{ (BRONZE_HOURS - user.profile.total_hours) / (BRONZE_HOURS)}}"></progress> BRONZE
+    {% endif %}
+    {% if user.profile.total_hours <= SILVER_HOURS and user.profile.total_hours > BRONZE_HOURS %}
+    Only <b>{{ SILVER_HOURS - user.profile.total_hours }} hours</b> away from <b>SILVER Tier</b>.<br><br>
+    BRONZE <progress max="100" value="{{ (SILVER_HOURS - user.profile.total_hours) / (SILVER_HOURS - BRONZE_HOURS)}}"></progress> SILVER
+    {% endif %}
+    {% if user.profile.total_hours <= GOLD_HOURS and user.profile.total_hours > SILVER_HOURS %}
+    Only <b>{{ GOLD_HOURS - user.profile.total_hours }} hours</b> away from <b>GOLD Tier</b>.<br><br>
+    SILVER <progress max="100" value="{{ (GOLD_HOURS - user.profile.total_hours) / (GOLD_HOURS - SILVER_HOURS)}}"></progress> GOLD
+    {% endif %}
 
     <h2>Awards</h2>
     <ul>
