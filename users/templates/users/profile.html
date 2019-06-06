@@ -56,5 +56,12 @@
     <p><a href="/users/edit-profile"></a></p>
     {% endif %}
     <p><a href="/">Back to homepage</a></p>
+
+    <h2>Completed Projects</h2>
+    <ul>
+    {% for project in user.complete_projects %}
+      <li><a href="{% url 'view_project' project_id=project.id %}">{{ project.title }}</a></li>
+    {% endfor %}
+    </ul>
   </body>
 </html>

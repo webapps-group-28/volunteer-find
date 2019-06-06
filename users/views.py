@@ -4,6 +4,7 @@ from . import models
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from projects import project_models
 
 BRONZE_HOURS = 20
 SILVER_HOURS = 100
@@ -29,6 +30,12 @@ def view_user_profile(request, username):
         user.awards.append((hours_to_level(user.profile.hours_social), "Social"))
     if hours_to_level(user.profile.hours_educational) != None:
         user.awards.append((hours_to_level(user.profile.hours_educational), "Educational"))
+
+    user.complete_projects = []
+    completed = project_models.CompletedProject.objects.all()
+    for entry in completed:
+        if entry.user.username == username:
+            user.complete_projects.append(entry.project)
 
     return render(request, "users/profile.html", { "user": user, "BRONZE_HOURS": BRONZE_HOURS, "SILVER_HOURS": SILVER_HOURS, "GOLD_HOURS": GOLD_HOURS })
 
