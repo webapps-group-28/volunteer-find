@@ -149,7 +149,7 @@ progress[value]::-moz-progress-bar {
     border: 2px solid rgb(0, 0, 0);
 }
 
-progress.bronze[value]::-moz-progress-value {
+progress.bronze[value]::-moz-progress-bar {
     background-color: #cd7f32;
 }
 
@@ -157,7 +157,7 @@ progress.bronze[value]::-webkit-progress-value {
     background-color: #cd7f32;
 }
 
-progress.silver[value]::-moz-progress-value {
+progress.silver[value]::-moz-progress-bar {
     background-color: #C0C0C0;
 }
 
@@ -165,7 +165,7 @@ progress.silver[value]::-webkit-progress-value {
     background-color: #C0C0C0;
 }
 
-progress.gold[value]::-moz-progress-value {
+progress.gold[value]::-moz-progress-bar {
     background-color: #FFD700;
 }
 
