@@ -3,6 +3,7 @@ from django.http import HttpResponse
 import geopy.distance
 from . import models
 from django.contrib.auth.models import User
+from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def project_signup(request):
