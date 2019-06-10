@@ -10,7 +10,7 @@ from users import models as users_models
 def project_signup(request):
     if request.method == "POST":
         signup_user(request.user, models.Project.objects.get(id=int(request.POST["projectid"])))
-    return HttpResponse("Volunteer successfully signed up for project")
+        return redirect("view_project", project_id=int(request.POST["projectid"]))
 
 def signup_user(user, project):
     entries = models.Volunteer.objects.all()
