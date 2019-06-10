@@ -54,7 +54,7 @@ def create_group(request):
 def add_member(request):
     user = User.objects.get(username=request.POST["username"])
     membershipEntry = models.GroupMember()
-    membershipEntry.user = request.user
+    membershipEntry.user = user
     membershipEntry.group = models.Group.objects.get(id=int(request.POST["groupid"]))
     membershipEntry.save()
     return redirect("view_group_profile", group_id=int(request.POST["groupid"]))
