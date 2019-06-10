@@ -44,6 +44,11 @@ def create_group(request):
     new_group.admin = request.user
     new_group.save()
     new_group = models.Group.objects.get(name=new_group.name)
+
+    membershipEntry = models.GroupMember()
+    membershipEntry.user = request.user
+    membershipEntry.group = new_group
+    membershipEntry.save()
     return redirect("view_group_profile", group_id=new_group.id)
 
 def view_user_profile(request, username):
