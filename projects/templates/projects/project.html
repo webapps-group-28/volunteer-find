@@ -17,7 +17,7 @@
     <p>{{ project.num_volunteers }} volunteers have joined this project</p>
     <form action="/projects/signupgroup/" method="POST">
       {% csrf_token %}
-      {% for group in request.user.groups %}
+      {% for group in groups %}
       <input type="checkbox" name="groups" value="{{ group.name }}">
       {% endfor %}
       <input type="submit" value="Signup selected groups">
