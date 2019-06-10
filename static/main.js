@@ -1,6 +1,7 @@
 buttons = document.getElementsByClassName("signup-button");
 for (let i = 0; i < buttons.length; i++) {
-  buttons[i].onclick = function() {
+  buttons[i].onclick = function(e) {
+    e.preventDefault();
     var http = new XMLHttpRequest();
     http.open("POST", "/projects/signup/", true);
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
