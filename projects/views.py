@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 @csrf_exempt
 def project_signup(request):
     if request.method == "POST":
-        volunteerEntry = Volunteer()
+        volunteerEntry = models.Volunteer()
         volunteerEntry.user = request.user
         volunteerEntry.project = Project.objects.get(id=int(request.POST["project_id"]))
         volunteerEntry.save()
