@@ -12,6 +12,7 @@ def project_signup(request):
         volunteerEntry.user = request.user
         volunteerEntry.project = models.Project.objects.get(id=int(request.POST["projectid"]))
         volunteerEntry.save()
+    return HttpResponse("Volunteer successfully signed up for project")
 
 def filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude):
     output = []
