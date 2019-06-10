@@ -6,6 +6,9 @@ for (var i = 0; i < buttons.length; i++) {
 }
 
 function sendSignupRequest(i) {
+  console.log(i);
+  console.log(buttons);
+  console.log(buttons[i]);
   var http = new XMLHttpRequest();
   http.open("POST", "/projects/signup/", true);
   var params = "project_id=" + buttons[i].id.substring(7, buttons[i].id.length);
