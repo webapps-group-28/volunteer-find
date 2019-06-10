@@ -24,19 +24,20 @@ def signup_user(user, project):
     return True
 
 def signup_group(request):
-    group_names = request.POST.getlist("groups[]")
-    membership = users_models.GroupMember.objects.all()
-    users = []
-    visited = []
-    for entry in membership:
-        for name in group_names:
-            if entry.group.name == name and entry.user.username not in visited:
-                visited.append(entry.user.username)
-                users.append(entry.user)
-                break
-    project = models.Project.objects.get(id=int(request.POST["projectid"]))
-    for user in users:
-        signup_user(user, project)
+    if request.method == "POST":
+        group_names = request.POST.getlist("groups[]")
+        membership = users_models.GroupMember.objects.all()
+        users = []
+        visited = []
+        for entry in membership:
+            for name in group_names:
+                if entry.group.name == name and entry.user.username not in visited:
+                    visited.append(entry.user.username)
+                    users.append(entry.user)
+                    break
+                    project = models.Project.objects.get(id=int(request.POST["projectid"]))
+                    for user in users:
+                        signup_user(user, project)
     return redirect(request.path_info)
 
 
