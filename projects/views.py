@@ -156,9 +156,9 @@ def view_project(request, project_id):
         if int(entry.project.id) == int(project_id):
             project.volunteers.append(entry.user)
     project.num_volunteers = len(project.volunteers)
-    membership = users_models.GroupMember.objects.all()
+    all_groups = users_models.Group.objects.all()
     groups = []
-    for entry in membership:
-        if entry.user.username == request.user.username:
-            groups.append(entry.group)
+    for group in all_groups:
+        if group.admin == request.user:
+            groups.append(group)
     return render(request, "projects/project.html", { "project": project, "groups": groups })
