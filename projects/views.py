@@ -19,9 +19,8 @@ def certify_project(request):
         project = models.Project.objects.get(id=int(request.POST["projectid"]))
 
         for key in request.POST:
-            if key == "projectid":
+            if key == "projectid" or key == "csrfmiddlewaretoken":
                 continue
-            print(key)
 
             user = User.objects.get(username=key)
             if project.type == "Environmental":
