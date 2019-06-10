@@ -4,6 +4,7 @@ import geopy.distance
 from . import models
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
+from users import models as users_models
 
 @csrf_exempt
 def project_signup(request):
@@ -13,6 +14,25 @@ def project_signup(request):
         volunteerEntry.project = models.Project.objects.get(id=int(request.POST["projectid"]))
         volunteerEntry.save()
     return HttpResponse("Volunteer successfully signed up for project")
+
+def signup_group(request):
+    group_names = request.POST.getlist("groups[]")
+    membership = users_models.GroupMember.objects.all()
+    users = []
+    visited = []
+    for entry in membership:
+        for name in group_names:
+            if entry.group.name == name and entry.user.username not in visited:
+                visited.append(entry.user.username)
+                users.append(entry.user)
+                break
+    for user in users:
+        volunteerEntry = models.Volunteer()
+        volunteerEntry.user = user
+        volunteerEntry.project = models.Project.objects.get(id=int(request.POST["projectid"]))
+        volunteerEntry.save()
+    return HttpResponse("Group successfully signed up for project")
+
 
 def certify_project(request):
     if request.method == "POST":
@@ -129,4 +149,9 @@ def view_project(request, project_id):
         if int(entry.project.id) == int(project_id):
             project.volunteers.append(entry.user)
     project.num_volunteers = len(project.volunteers)
+    membership = users_models.GroupMember.objects.all()
+    request.user.groups = []
+    for entry in membership:
+        if entry.user.username == request.user.username:
+            request.user.groups.append(entry.group)
     return render(request, "projects/project.html", { "project": project })

@@ -15,6 +15,13 @@
     <p>End date: {{ project.end_date }}</p>
     <p>Estimated hours of work: {{ project.duration }} hrs</p>
     <p>{{ project.num_volunteers }} volunteers have joined this project</p>
+    <form action="/projects/signupgroup/" method="POST">
+      {% csrf_token %}
+      {% for group in request.user.groups %}
+      <input type="checkbox" name="groups" value="{{ group.name }}">
+      {% endfor %}
+      <input type="submit" value="Signup selected groups">
+    </form>
     <div id="map" class="map"></div>
     <script type="text/javascript">
       var map = new ol.Map({
