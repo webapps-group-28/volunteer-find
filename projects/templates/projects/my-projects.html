@@ -8,9 +8,9 @@
   </head>
   <body>
     <h1>Projects that I'm volunteering in</h1>
-    <div id="projects">
+    <div>
       {% for project in volunteer_projects %}
-      <div class="project">
+      <div>
         <h3><a href="{% url 'view_project' project_id=project.id %}">{{ project.title }}</a></h3>
         <p><em>{{ project.type }}</em></p>
         <p>{{ project.description }}</p>
@@ -23,9 +23,9 @@
     </div>
 
     <h1>Projects that I'm organising</h1>
-    <div id="projects">
+    <div>
       {% for project in organise_projects %}
-      <div class="project">
+      <div>
         <h3><a href="{% url 'view_project' project_id=project.id %}">{{ project.title }}</a></h3>
         <p><em>{{ project.type }}</em></p>
         <p>{{ project.description }}</p>
