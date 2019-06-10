@@ -38,7 +38,7 @@ def signup_group(request):
         project = models.Project.objects.get(id=int(request.POST["projectid"]))
         for user in users:
             signup_user(user, project)
-    return redirect("/")
+        return redirect("view_project", project_id=project.id)
 
 
 def certify_project(request):
@@ -67,7 +67,7 @@ def certify_project(request):
         project.completed = True
         project.save()
 
-    return redirect("/")
+        return redirect("/")
 
 def filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude):
     output = []
