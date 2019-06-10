@@ -1,16 +1,12 @@
 buttons = document.getElementsByClassName("signup-button");
-for (var i = 0; i < buttons.length; i++) {
+for (let i = 0; i < buttons.length; i++) {
   buttons[i].onclick = function() {
-    sendSignupRequest(i);
+    console.log(i);
+    console.log(buttons);
+    console.log(buttons[i]);
+    var http = new XMLHttpRequest();
+    http.open("POST", "/projects/signup/", true);
+    var params = "project_id=" + buttons[i].id.substring(7, buttons[i].id.length);
+    http.send(params);
   };
-}
-
-function sendSignupRequest(i) {
-  console.log(i);
-  console.log(buttons);
-  console.log(buttons[i]);
-  var http = new XMLHttpRequest();
-  http.open("POST", "/projects/signup/", true);
-  var params = "project_id=" + buttons[i].id.substring(7, buttons[i].id.length);
-  http.send(params);
 }
