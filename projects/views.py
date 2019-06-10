@@ -23,6 +23,21 @@ def signup_user(user, project):
     volunteerEntry.save()
     return True
 
+def my_projects(request):
+    projects = models.Project.objects.all()
+    volunteer_projects = []
+    organise_projects = []
+    for project in projects:
+        if project.organiser.username == request.username:
+            organise_projects.append(project)
+
+    volunteers = models.Volunteer.objects.all()
+    for entry in volunteers:
+        if entry.user.username == request.user.username:
+            volunteer_projects.append(entry.project)
+
+    return render(request, "projects/my-projects.html", {"volunteer_projects": volunteer_projects, "organise_projects": organise_projects})
+
 def signup_group(request):
     if request.method == "POST":
         group_names = request.POST.getlist("groups")
