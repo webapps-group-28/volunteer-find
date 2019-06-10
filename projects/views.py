@@ -34,8 +34,8 @@ def certify_project(request):
 
             completedEntry = models.CompletedProject()
             completedEntry.user = user
-            completeEntry.project = project
-            completeEntry.save()
+            completedEntry.project = project
+            completedEntry.save()
 
         project.completed = True
         project.save()
