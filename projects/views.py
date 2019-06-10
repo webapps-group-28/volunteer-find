@@ -9,11 +9,19 @@ from users import models as users_models
 @csrf_exempt
 def project_signup(request):
     if request.method == "POST":
-        volunteerEntry = models.Volunteer()
-        volunteerEntry.user = request.user
-        volunteerEntry.project = models.Project.objects.get(id=int(request.POST["projectid"]))
-        volunteerEntry.save()
+        signup_user(request.user, models.Project.objects.get(id=int(request.POST["projectid"])))
     return HttpResponse("Volunteer successfully signed up for project")
+
+def signup_user(user, project):
+    entries = models.Volunteer.objects.all()
+    for entry in entries:
+        if entry.user.username == user.username and entry.project.id == project.id:
+            return False
+    volunteerEntry = models.Volunteer()
+    volunteerEntry.user = user
+    volunteerEntry.project = project
+    volunteerEntry.save()
+    return True
 
 def signup_group(request):
     group_names = request.POST.getlist("groups[]")
@@ -26,11 +34,9 @@ def signup_group(request):
                 visited.append(entry.user.username)
                 users.append(entry.user)
                 break
+    project = models.Project.objects.get(id=int(request.POST["projectid"]))
     for user in users:
-        volunteerEntry = models.Volunteer()
-        volunteerEntry.user = user
-        volunteerEntry.project = models.Project.objects.get(id=int(request.POST["projectid"]))
-        volunteerEntry.save()
+        signup_user(user, project)
     return HttpResponse("Group successfully signed up for project")
 
 
