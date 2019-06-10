@@ -10,7 +10,7 @@ def project_signup(request):
     if request.method == "POST":
         volunteerEntry = models.Volunteer()
         volunteerEntry.user = request.user
-        volunteerEntry.project = models.Project.objects.get(id=int(request.POST["project_id"]))
+        volunteerEntry.project = models.Project.objects.get(id=int(request.POST["projectid"]))
         volunteerEntry.save()
 
 def filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude):
