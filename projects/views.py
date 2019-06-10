@@ -28,7 +28,7 @@ def my_projects(request):
     volunteer_projects = []
     organise_projects = []
     for project in projects:
-        if project.organiser.username == request.username:
+        if project.organiser.username == request.user.username:
             organise_projects.append(project)
 
     volunteers = models.Volunteer.objects.all()
