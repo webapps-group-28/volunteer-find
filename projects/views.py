@@ -31,7 +31,7 @@ def certify_project(request):
                 user.profile.hours_educational += int(request.POST[key])
 
             user.save()
-            
+
             completedEntry = models.CompletedProject()
             completedEntry.user = user
             completeEntry.project = project
@@ -40,7 +40,7 @@ def certify_project(request):
         project.completed = True
         project.save()
 
-    return HttpResponse("Project successfully marked as completed")
+    return redirect("/")
 
 def filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude):
     output = []
