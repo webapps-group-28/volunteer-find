@@ -38,7 +38,7 @@ def signup_group(request):
         project = models.Project.objects.get(id=int(request.POST["projectid"]))
         for user in users:
             signup_user(user, project)
-    return redirect(request.path_info)
+    return redirect("/")
 
 
 def certify_project(request):
