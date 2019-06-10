@@ -21,6 +21,7 @@ def certify_project(request):
         for key in request.POST:
             if key == "projectid":
                 continue
+            print(key)
 
             user = User.objects.get(username=key)
             if project.type == "Environmental":
