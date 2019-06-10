@@ -65,7 +65,7 @@ form {
     width: 100%;
 }
 
-form input, textarea, button {
+form input:not([type='checkbox']), textarea, button {
     box-sizing: border-box;
     -webkit-appearance: none;
     border-radius: 0;
