@@ -25,7 +25,7 @@ def signup_user(user, project):
 
 def signup_group(request):
     if request.method == "POST":
-        group_names = request.POST.getlist("groups[]")
+        group_names = request.POST.getlist("groups")
         membership = users_models.GroupMember.objects.all()
         users = []
         visited = []
