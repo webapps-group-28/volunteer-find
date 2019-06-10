@@ -31,6 +31,11 @@ def certify_project(request):
                 user.profile.hours_educational += int(request.POST[key])
 
             user.save()
+            
+            completedEntry = models.CompletedProject()
+            completedEntry.user = user
+            completeEntry.project = project
+            completeEntry.save()
 
         project.completed = True
         project.save()
