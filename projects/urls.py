@@ -21,5 +21,6 @@ from . import views
 urlpatterns = [
     url(r'^create/$', views.create_project),
     url(r'^signup/$', views.project_signup),
+    url(r'^certify/$', views.certify_project),
     url(r'^(?P<project_id>[\d]+)/$', views.view_project, name="view_project")
 ]

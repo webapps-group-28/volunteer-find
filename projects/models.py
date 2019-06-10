@@ -11,6 +11,7 @@ class Project(models.Model):
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
     organiser = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    completed = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

@@ -14,6 +14,29 @@ def project_signup(request):
         volunteerEntry.save()
     return HttpResponse("Volunteer successfully signed up for project")
 
+def certify_project(request):
+    if request.method == "POST":
+        project = models.Project.objects.get(id=int(request.POST["projectid"]))
+
+        for key in request.POST:
+            if key == "projectid":
+                continue
+
+            user = User.objects.get(username=key)
+            if project.type == "Environmental":
+                user.profile.hours_environmental += int(request.POST[key])
+            elif project.type == "Social":
+                user.profile.hours_social += int(request.POST[key])
+            elif project.type == "Educational":
+                user.profile.hours_educational += int(request.POST[key])
+
+            user.save()
+
+        project.completed = True
+        project.save()
+
+    return HttpResponse("Project successfully marked as completed")
+
 def filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude):
     output = []
 

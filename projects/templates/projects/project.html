@@ -31,13 +31,20 @@
       });
     </script>
     <p><a href="/">Back to homepage</a></p>
+    {% if project.organiser.username == request.user.username %}
+    <p>As the organiser of this project, you can mark this project as completed, and choose how many hours to certify each volunteer who participated.</p>
+    <input type="submit" form="certify">
+    {% endif %}
     {% if project.num_volunteers > 0 %}
     <h2>Volunteers who have already signed up</h2>
-    <ul>
-      {% for user in project.volunteers %}
-      <li><a href="{% url 'view_user_profile' username=user.username %}">{{ user.get_full_name }}</a></li>
-      {% endfor %}
-    </ul>
+    <form id="certify" method="POST" action="/projects/certify/">
+      <input type="hidden" name="projectid" value="{{ project.id }}">
+      <ul>
+        {% for user in project.volunteers %}
+        <li><a href="{% url 'view_user_profile' username=user.username %}">{{ user.get_full_name }}</a><input type="number" value="{{ project.duration }}" name="{{ user.username }}"> hrs</li>
+        {% endfor %}
+      </ul>
+    </form>
     {% endif %}
   </body>
 </html>
