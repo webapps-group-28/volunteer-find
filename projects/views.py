@@ -35,9 +35,9 @@ def signup_group(request):
                     visited.append(entry.user.username)
                     users.append(entry.user)
                     break
-                    project = models.Project.objects.get(id=int(request.POST["projectid"]))
-                    for user in users:
-                        signup_user(user, project)
+        project = models.Project.objects.get(id=int(request.POST["projectid"]))
+        for user in users:
+            signup_user(user, project)
     return redirect(request.path_info)
 
 
