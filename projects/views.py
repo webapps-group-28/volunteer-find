@@ -65,6 +65,9 @@ def filter_projects(projects, minduration, maxduration, maxdistance, latitude, l
 
         project.distance = int(distance)
 
+        if project.completed:
+            continue
+
         output.append(project)
     return output
 
