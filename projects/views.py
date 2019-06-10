@@ -4,6 +4,12 @@ import geopy.distance
 from . import models
 from django.contrib.auth.models import User
 
+def project_signup(request):
+    if request.method == "POST":
+        volunteerEntry = Volunteer()
+        volunteerEntry.user = request.user
+        volunteerEntry.project = Project.objects.get(id=int(request.POST["project_id"]))
+        volunteerEntry.save()
 
 def filter_projects(projects, minduration, maxduration, maxdistance, latitude, longitude):
     output = []

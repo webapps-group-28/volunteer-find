@@ -25,6 +25,7 @@
         <p>Start date: {{ project.start_date }}</p>
         <p>End date: {{ project.end_date }}</p>
         <p>Estimated hours of work: {{ project.duration }} hrs</p>
+        <p class="signup-button" id="project{{ project.id }}"></p>
       </div>
       {% endfor %}
     </div>
@@ -72,7 +73,7 @@
       </div>
     </div>
     {% endif %}
-    <script src="/static/search.js"></script>
+    <script src="/static/main.js"></script>
     <script>
       if (window.location.search.substr(1) == "") {
         if ("geolocation" in navigator) {
