@@ -35,15 +35,6 @@
 
   <style>
   * { font-family: 'Karla', sans-serif !important; }
-  article h6 {
-    margin: 0;
-  }
-  article p {
-    margin-bottom: 15px;
-  }
-  article {
-    width: 50% !important;
-  }
   input, select {
     padding: 0.5em 1em !important;
     line-height: 1.5em !important;
@@ -99,8 +90,15 @@
             <h1>Log in to your account</h1>
             <form action="/users/login/" method="POST">
               {% csrf_token %}
-              {{ form }}
-              <input type="submit" value="Login">
+              <div class="form-field">
+                <h6>Username</h6>
+             <input name="username" type="text" class="full-width" autofocus required id="id_username">
+              </div>
+              <div class="form-field">
+                <h6>Password</h6>
+             <input name="password" type="password" class="full-width" required id="id_password">
+              </div>
+              <button type="submit" class="submit button-primary full-width-on-mobile">Log in</button>
             </form>
 
 				</div>
