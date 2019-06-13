@@ -31,11 +31,13 @@ def my_projects(request):
     for project in projects:
         if project.organiser.username == request.user.username:
             organise_projects.append(project)
+            project.duration = int(project.duration)
 
     volunteers = models.Volunteer.objects.all()
     for entry in volunteers:
         if entry.user.username == request.user.username:
             volunteer_projects.append(entry.project)
+            entry.project.duration = int(project.duration)
 
     return render(request, "projects/my-projects.html", {"volunteer_projects": volunteer_projects, "organise_projects": organise_projects})
 
