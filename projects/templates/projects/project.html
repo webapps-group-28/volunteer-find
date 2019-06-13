@@ -114,6 +114,8 @@
               <input type="hidden" name="projectid" value="{{ project.id }}">
               <button type="submit" class="submit button-primary full-width-on-mobile">Sign up</button>
             </form>
+            {% else %}
+            <h4>You have already joined this project</h4>
             {% endif %}
             <form action="/projects/signupgroup/" method="POST">
               <h2>Sign up to this project as a group</h2>
