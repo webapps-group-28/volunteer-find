@@ -125,6 +125,7 @@
 
    			<section>
 						<h1 class="entry-title add-bottom">{{ project.title }}</h1>
+            <h6>Type of project</h6>
 						<p><em>{{ project.type }}</em></p>
             <h6>Description</h6>
 						<p>{{ project.description }}</p>
@@ -134,6 +135,12 @@
 						<p>{{ project.end_date }}</p>
             <h6>Estimated hours of work</h6>
 						<p>{{ project.duration }} hrs</p>
+            <h5>{{ project.num_volunteers }} volunteers have already joined this project</h5>
+            <form action="/projects/signup/" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="projectid" value="{{ project.id }}">
+              <button type="submit" class="submit button-primary full-width-on-mobile">Sign up</button>
+            </form>
 				</section>
         </div>
 
