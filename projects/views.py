@@ -158,11 +158,13 @@ def create_project(request):
         project = models.Project()
         project.title = request.POST["title"]
         project.description = request.POST["description"]
-        project.latitude = request.POST["latitude"]
-        project.longitude = request.POST["longitude"]
         project.type = request.POST["type"]
         project.duration = float(request.POST["duration"])
-        project.organiser = User.objects.all()[0]
+        project.organiser = request.user
+        project.start_date = request.POST["startdate"]
+        project.end_date = request.POST["enddate"]
+        project.address = request.POST["address"]
+        project.postcode = request.POST["postcode"]
         project.save()
 
         project = models.Project.objects.get(title=project.title)
