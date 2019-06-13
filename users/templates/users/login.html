@@ -90,6 +90,7 @@
             <h1>Log in to your account</h1>
             <form action="/users/login/" method="POST">
               {% csrf_token %}
+              <fieldset>
               <div class="form-field">
                 <h6>Username</h6>
              <input name="username" type="text" class="full-width" autofocus required id="id_username">
@@ -99,6 +100,7 @@
              <input name="password" type="password" class="full-width" required id="id_password">
               </div>
               <button type="submit" class="submit button-primary full-width-on-mobile">Log in</button>
+              </fieldset>
             </form>
 
 				</div>
