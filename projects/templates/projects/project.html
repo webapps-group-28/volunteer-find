@@ -140,6 +140,21 @@
               {% endif %}
             </form>
             {% endif %}
+            <div id="map" class="map"></div>
+            <script type="text/javascript">
+              var map = new ol.Map({
+                target: 'map',
+                layers: [
+                  new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                  })
+                ],
+                view: new ol.View({
+                  center: ol.proj.fromLonLat([{{ project.longitude }}, {{ project.latitude }}]),
+                  zoom: 15
+                })
+              });
+            </script>
             {% if project.organiser.username == request.user.username and not project.completed %}
             <h2>Certify volunteers</h2>
             <p>As the organiser of this project, you can mark this project as completed, and choose how many hours to certify each volunteer who participated.</p>
