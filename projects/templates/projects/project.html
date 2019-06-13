@@ -102,6 +102,8 @@
 						<p><em>{{ project.type }}</em></p>
             <h6>Description</h6>
 						<p>{{ project.description }}</p>
+            <h6>Organiser</h6>
+						<p><a href="{% url 'view_user_profile' username=project.organiser.username %}">{{ project.organiser.get_full_name }}</a></p>
             <h6>Address</h6>
 						<p>{{ project.address }}</p>
             <h6>Postcode</h6>
