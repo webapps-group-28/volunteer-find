@@ -120,12 +120,16 @@
             <form action="/projects/signupgroup/" method="POST">
               <h2>Sign up to this project as a group</h2>
               <p>All the groups that you are admin of are shown below. You can sign up all the members of these groups to this project with just one click.</p>
+              {% if groups %}
               {% csrf_token %}
               <input type="hidden" name="projectid" value="{{ project.id }}">
               {% for group in groups %}
               <input type="checkbox" name="groups" value="{{ group.name }}" style="margin: 0"> <h6 style="display: inline-block; margin-right: 10px">{{ group.name }}</h6>
               {% endfor %}<br>
               <button type="submit" class="submit button-primary full-width-on-mobile">Sign up selected groups</button>
+              {% else %}
+              <h4>You are not the admin of any group</h4>
+              {% endif %}
             </form>
             {% endif %}
             {% if project.organiser.username == request.user.username and not project.completed %}
