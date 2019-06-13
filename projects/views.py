@@ -37,7 +37,7 @@ def my_projects(request):
     for entry in volunteers:
         if entry.user.username == request.user.username:
             volunteer_projects.append(entry.project)
-            entry.project.duration = int(project.duration)
+            entry.project.duration = int(entry.project.duration)
 
     return render(request, "projects/my-projects.html", {"volunteer_projects": volunteer_projects, "organise_projects": organise_projects})
 
