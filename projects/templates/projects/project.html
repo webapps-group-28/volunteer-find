@@ -35,46 +35,17 @@
 
   <style>
   * { font-family: 'Karla', sans-serif !important; }
-
-  progress[value] {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
+  ul {
+    list-style-type: none;
   }
-
-  progress[value]::-webkit-progress-bar {
-      background-color: rgb(255, 255, 255);
-      border: 1px solid rgb(100, 100, 100);
+  input, select {
+    padding: 0.5em 1em !important;
+    line-height: 1.5em !important;
+    height: 3em !important;
   }
-
-  progress[value]::-moz-progress-bar {
-      background-color: rgb(255, 255, 255);
-      border: 1px solid rgb(100, 100, 100);
+  a {
+    color: black;
   }
-
-    progress.bronze[value]::-moz-progress-bar {
-        background-color: #cd7f32;
-    }
-
-    progress.bronze[value]::-webkit-progress-value {
-        background-color: #cd7f32;
-    }
-
-    progress.silver[value]::-moz-progress-bar {
-        background-color: #C0C0C0;
-    }
-
-    progress.silver[value]::-webkit-progress-value {
-        background-color: #C0C0C0;
-    }
-
-    progress.gold[value]::-moz-progress-bar {
-        background-color: #FFD700;
-    }
-
-    progress.gold[value]::-webkit-progress-value {
-        background-color: #FFD700;
-    }
   </style>
 
 </head>
@@ -164,9 +135,9 @@
               <input type="hidden" name="projectid" value="{{ project.id }}">
               <ul>
                 {% for user in project.volunteers %}
-                <li><a href="{% url 'view_user_profile' username=user.username %}">{{ user.get_full_name }}</a>
+                <li><h5><a href="{% url 'view_user_profile' username=user.username %}">{{ user.get_full_name }}</a></h5>
                   {% if project.organiser.username == request.user.username and not project.completed %}
-                  <input type="number" value="{{ project.duration }}" name="{{ user.username }}"> hrs
+                  <input type="number" value="{{ project.duration }}" name="{{ user.username }}">
                   {% endif %}</li>
                 {% endfor %}
               </ul>
