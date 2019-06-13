@@ -33,6 +33,7 @@ class Group(models.Model):
     description = models.TextField(max_length=500, blank=True)
     admin = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     date_created = models.DateField(auto_now_add=True)
+    num_members = models.IntegerField(blank=True)
 
     def __str__(self):
         return self.name

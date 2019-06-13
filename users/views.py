@@ -35,6 +35,7 @@ def my_groups(request, username):
     for entry in group_membership:
         if entry.user.username == username:
             groups.append(entry.group)
+
     return render(request, "users/my-groups.html", {"groups": groups})
 
 def create_group(request):
@@ -44,6 +45,7 @@ def create_group(request):
     new_group.name = request.POST["name"]
     new_group.description = request.POST["description"]
     new_group.admin = request.user
+    new_group.num_members = 1
     new_group.save()
     new_group = models.Group.objects.get(name=new_group.name)
 
@@ -59,6 +61,9 @@ def add_member(request):
     membershipEntry.user = user
     membershipEntry.group = models.Group.objects.get(id=int(request.POST["groupid"]))
     membershipEntry.save()
+    group = models.Group.objects.get(id=int(request.POST["groupid"]))
+    group.num_members += 1
+    group.save()
     return redirect("view_group_profile", group_id=int(request.POST["groupid"]))
 
 def view_user_profile(request, username):
@@ -112,7 +117,6 @@ def view_group_profile(request, group_id):
     for entry in group_membership:
         if int(entry.group.id) == int(group_id):
             group.members.append(entry.user)
-    group.num_members = len(group.members)
 
     return render(request, "users/group.html", { "group": group })
 
