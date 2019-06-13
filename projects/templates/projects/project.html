@@ -1,69 +1,208 @@
-<!doctype html>
-<html>
-  <head>
-    <title>{{ project.title }}</title>
-    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
-    <link rel="stylesheet" href="/static/home.css">
-    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-  </head>
-  <body>
-    <h1>{{ project.title }}</h1>
-    <p><em>{{ project.type }}</em></p>
-    <p>{{ project.description }}</p>
-    <p>Start date: {{ project.start_date }}</p>
-    <p>End date: {{ project.end_date }}</p>
-    <p>Estimated hours of work: {{ project.duration }} hrs</p>
-    <p>{{ project.num_volunteers }} volunteers have joined this project</p>
-    <form action="/projects/signup/" method="POST">
-      {% csrf_token %}
-      <input type="hidden" name="projectid" value="{{ project.id }}">
-      <input type="submit" value="Sign up">
-    </form>
-    <form action="/projects/signupgroup/" method="POST">
-      <h2>Sign up to this project as a group</h2>
-      <p>All the groups that you are admin of are shown below. You can sign up all the members of these groups to this project with just one click.</p>
-      {% csrf_token %}
-      <input type="hidden" name="projectid" value="{{ project.id }}">
-      {% for group in groups %}
-      <input type="checkbox" name="groups" value="{{ group.name }}"> {{ group.name }}
-      {% endfor %}
-      <input type="submit" value="Signup selected groups">
-    </form>
-    <div id="map" class="map"></div>
-    <script type="text/javascript">
-      var map = new ol.Map({
-        target: 'map',
-        layers: [
-          new ol.layer.Tile({
-            source: new ol.source.OSM()
-          })
-        ],
-        view: new ol.View({
-          center: ol.proj.fromLonLat([{{ project.longitude }}, {{ project.latitude }}]),
-          zoom: 15
-        })
-      });
-    </script>
-    <p><a href="/">Back to homepage</a></p>
-    {% if project.organiser.username == request.user.username and not project.completed %}
-    <p>As the organiser of this project, you can mark this project as completed, and choose how many hours to certify each volunteer who participated.</p>
-    <input type="submit" form="certify">
-    {% endif %}
-    {% if project.num_volunteers > 0 %}
-    <h2>Volunteers who have already signed up</h2>
-    <form id="certify" method="POST" action="/projects/certify/">
-      {% csrf_token %}
-      <input type="hidden" name="projectid" value="{{ project.id }}">
-      <ul>
-        {% for user in project.volunteers %}
-        <li><a href="{% url 'view_user_profile' username=user.username %}">{{ user.get_full_name }}</a>
-          {% if project.organiser.username == request.user.username and not project.completed %}
-          <input type="number" value="{{ project.duration }}" name="{{ user.username }}"> hrs
-          {% endif %}</li>
-        {% endfor %}
-      </ul>
-    </form>
-    {% endif %}
-  </body>
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+
+   <!--- basic page needs
+   ================================================== -->
+   <meta charset="utf-8">
+	<title>{{ user.get_full_name }}</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+   <!-- mobile specific metas
+   ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+ 	<!-- CSS
+   ================================================== -->
+   <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="/static/css/base.css">
+   <link rel="stylesheet" href="/static/css/vendor.css">
+   <link rel="stylesheet" href="/static/css/main.css">
+
+
+   <!-- script
+   ================================================== -->
+	<script src="/static/js/modernizr.js"></script>
+	<script src="/static/js/pace.min.js"></script>
+
+   <!-- favicons
+	================================================== -->
+	<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+  <style>
+  * { font-family: 'Karla', sans-serif !important; }
+
+  progress[value] {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+  }
+
+  progress[value]::-webkit-progress-bar {
+      background-color: rgb(255, 255, 255);
+      border: 1px solid rgb(100, 100, 100);
+  }
+
+  progress[value]::-moz-progress-bar {
+      background-color: rgb(255, 255, 255);
+      border: 1px solid rgb(100, 100, 100);
+  }
+
+    progress.bronze[value]::-moz-progress-bar {
+        background-color: #cd7f32;
+    }
+
+    progress.bronze[value]::-webkit-progress-value {
+        background-color: #cd7f32;
+    }
+
+    progress.silver[value]::-moz-progress-bar {
+        background-color: #C0C0C0;
+    }
+
+    progress.silver[value]::-webkit-progress-value {
+        background-color: #C0C0C0;
+    }
+
+    progress.gold[value]::-moz-progress-bar {
+        background-color: #FFD700;
+    }
+
+    progress.gold[value]::-webkit-progress-value {
+        background-color: #FFD700;
+    }
+  </style>
+
+</head>
+
+<body id="top">
+
+	<!-- header
+   ================================================== -->
+   <header class="short-header">
+
+   	<div class="gradient-block"></div>
+
+   	<div class="row header-content">
+
+   		<div class="logo">
+	         <a href="index.html">Author</a>
+	      </div>
+
+	   	<nav id="main-nav-wrap">
+				<ul class="main-navigation sf-menu">
+					<li><a href="/" title="">Home</a></li>
+          {% if request.user.is_authenticated %}
+          <li><a href="{% url 'view_user_profile' username=request.user.username %}">My Profile</a></li>
+          <li><a href="/users/groups/create/">Create Group</a></li>
+          <li><a href="{% url 'my_groups' username=request.user.username %}">My Groups</a></li>
+          <li><a href="/projects/myprojects/">My Projects</a></li>
+          {% endif %}
+          <li><a href="/users/leaderboard/">Leaderboard</a></li>
+          {% if request.user.is_authenticated %}
+          <li><a href="/users/logout/" title="">Logout</a></li>
+          {% else %}
+          <li><a href="/users/login/" title="">Login</a></li>
+          <li><a href="/users/signup/" title="">Signup</a></li>
+          {% endif %}
+				</ul>
+			</nav> <!-- end main-nav-wrap -->
+
+   	</div>
+
+   </header> <!-- end header -->
+
+
+   <!-- content
+   ================================================== -->
+   <section id="content-wrap" class="site-page">
+   	<div class="row">
+   		<div class="col-twelve">
+
+   			<section>
+
+
+
+						<h1 class="entry-title add-bottom">{{ user.get_full_name }}</h1>
+            <h6>Biography</h6>
+						<p>{{ user.profile.bio }}</p>
+            {% if user.profile.email %}
+            <h6>Email</h6>
+						<p>{{ user.profile.email }}</p>
+            {% endif %}
+            {% if user.profile.phone %}
+            <h6>Phone number</h6>
+						<p>079647459</p>
+            {% endif %}
+            <div>
+              <h2>Current Progress</h2>
+              {% if user.tier != "ROOKIE" %}
+                  <div><img src="/static/images/{{ user.tier_img }}.gif" style="margin-left: 0; margin-right: 20px; height:200px"></div>
+              {% endif %}
+                  <div><h3>{{ user.tier }} Tier Volunteer</h3><h5 style="margin: 0">{{ user.profile.total_hours }} hrs logged</h5>{% if user.tier != "GOLD" %}<progress id="progressbar" class="{{ user.color }}" max="100" value="{{ user.progress_value }}" style="height: 15px; width: 500px; display: block;"></progress><h5 style="margin: 0">{{ user.hours_difference }} hrs until {{ user.word_right }}</h5>{% endif %}</div>
+            </div>
+						<div style="margin-top: 12px">
+              <h2>Awards</h2>
+              {% if user.awards %}
+              {% for level, type in user.awards %}
+							<div style="display: inline-block; margin-right: 20px">
+								<h3>{{ level }} {{ type }} Award</h3>
+								<p><img src="/static/images/{{ level }}-{{ type }}.gif" style="height: 200px"></p>
+							</div>
+              {% endfor %}
+              {% else %}
+              <p>You have not yet earned any awards.</p>
+              {% endif %}
+						</div>
+					</div>
+
+
+				</section>
+
+			</div> <!-- end col-twelve -->
+   	</div> <!-- end row -->
+
+   </section> <!-- end content -->
+
+
+   <!-- footer
+   ================================================== -->
+   <footer>
+
+
+      <div class="footer-bottom">
+      	<div class="row">
+
+      		<div class="col-twelve">
+	      		<div class="copyright">
+		         	<span>© Copyright Abstract 2016</span>
+		         	<span>Design by <a href="http://www.styleshout.com/">styleshout</a></span>
+		         </div>
+
+		         <div id="go-top">
+		            <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon icon-arrow-up"></i></a>
+		         </div>
+	      	</div>
+
+      	</div>
+      </div> <!-- end footer-bottom -->
+
+   </footer>
+
+   <div id="preloader">
+    	<div id="loader"></div>
+   </div>
+
+   <!-- Java Script
+   ================================================== -->
+   <script src="/static/js/jquery-2.1.3.min.js"></script>
+   <script src="/static/js/plugins.js"></script>
+   <script src="/static/js/main.js"></script>
+
+</body>
+
 </html>
