@@ -11,5 +11,5 @@ jobs:
       # - run: sudo pip install whitenoise
       # - run: sudo pip install psycopg2
       # - run: sudo pip install geopy
-      - run: sudo pip install -r ../requirements.txt
+      - run: sudo pip install -r requirements.txt
       - run: python manage.py test
