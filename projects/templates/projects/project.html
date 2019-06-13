@@ -136,11 +136,23 @@
             <h6>Estimated hours of work</h6>
 						<p>{{ project.duration }} hrs</p>
             <h4>{{ project.num_volunteers }} volunteers have already joined this project</h4>
+            {% if request.user.is_authenticated %}
             <form action="/projects/signup/" method="POST">
               {% csrf_token %}
               <input type="hidden" name="projectid" value="{{ project.id }}">
               <button type="submit" class="submit button-primary full-width-on-mobile">Sign up</button>
             </form>
+            <form action="/projects/signupgroup/" method="POST">
+              <h2>Sign up to this project as a group</h2>
+              <p>All the groups that you are admin of are shown below. You can sign up all the members of these groups to this project with just one click.</p>
+              {% csrf_token %}
+              <input type="hidden" name="projectid" value="{{ project.id }}">
+              {% for group in groups %}
+              <input type="checkbox" name="groups" value="{{ group.name }}"> {{ group.name }}
+              {% endfor %}
+              <button type="submit" class="submit button-primary full-width-on-mobile">Sign up selected groups</button>
+            </form>
+            {% endif %}
 				</section>
         </div>
 
