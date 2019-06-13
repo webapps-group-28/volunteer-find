@@ -144,7 +144,14 @@ def homepage(request):
         latitude = 51.498833
         longitude = -0.175113
 
-    return render(request, "projects/home.html", { "projects": output, "minduration": int(minduration), "maxduration": int(maxduration), "maxdistance": int(maxdistance), "latitude": latitude, "longitude": longitude })
+    if minduration:
+        minduration = int(minduration)
+    if maxduration:
+        maxduration = int(maxduration)
+    if maxdistance:
+        maxdistance = int(maxdistance)
+
+    return render(request, "projects/home.html", { "projects": output, "minduration": minduration, "maxduration": maxduration, "maxdistance": maxdistance, "latitude": latitude, "longitude": longitude })
 
 def create_project(request):
     if request.method == "POST":
