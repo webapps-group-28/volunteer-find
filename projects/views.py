@@ -173,9 +173,12 @@ def view_project(request, project_id):
     project = models.Project.objects.get(pk=int(project_id))
     project.duration = int(project.duration)
     project.volunteers = []
+    project.signed_up = False
     volunteerEntries = models.Volunteer.objects.all()
     for entry in volunteerEntries:
         if int(entry.project.id) == int(project_id):
+            if entry.user.username == request.user.username:
+                project.signed_up = True
             project.volunteers.append(entry.user)
     project.num_volunteers = len(project.volunteers)
     all_groups = users_models.Group.objects.all()
@@ -183,4 +186,5 @@ def view_project(request, project_id):
     for group in all_groups:
         if group.admin == request.user:
             groups.append(group)
+
     return render(request, "projects/project.html", { "project": project, "groups": groups })
