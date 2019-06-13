@@ -5,6 +5,7 @@ from . import models
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from users import models as users_models
+import pgeocode
 
 @csrf_exempt
 def project_signup(request):
@@ -165,8 +166,10 @@ def create_project(request):
         project.end_date = request.POST["enddate"]
         project.address = request.POST["address"]
         project.postcode = request.POST["postcode"]
-        project.latitude = 51
-        project.longitude = 50
+        nomi = pgeocode.Nominatim("gb")
+        query_result = nomi.query_postal_code(project.postcode)
+        project.latitude = query_result["latitude"]
+        project.longitude = query_result["longitude"]
         project.save()
 
         project = models.Project.objects.get(title=project.title)

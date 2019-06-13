@@ -5,3 +5,4 @@ whitenoise==3.2
 psycopg2
 geopy
 postcodes-io-api==0.0.4
+pgeocode

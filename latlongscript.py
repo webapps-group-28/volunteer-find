@@ -1,8 +1,4 @@
-import postcodes_io_api
-
-def lat_long_from_postcode(postcode):
-    api  = postcodes_io_api.Api(debug_http=True)
-    data = api.get_postcode(postcode)
-    lat = data['latitude']
-    lng = data['longitude']
-    return lat, lng
+import pgeocode
+nomi = pgeocode.Nominatim("gb")
+nomi.query_postal_code("sm1 1rl")
+print(nomi.query_postal_code("sm1 1rl")["longitude"])
