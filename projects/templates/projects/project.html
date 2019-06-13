@@ -149,7 +149,7 @@
               <input type="hidden" name="projectid" value="{{ project.id }}">
               {% for group in groups %}
               <input type="checkbox" name="groups" value="{{ group.name }}"> {{ group.name }}
-              {% endfor %}
+              {% endfor %}<br>
               <button type="submit" class="submit button-primary full-width-on-mobile">Sign up selected groups</button>
             </form>
             {% endif %}
