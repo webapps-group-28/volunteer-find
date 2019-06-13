@@ -165,6 +165,8 @@ def create_project(request):
         project.end_date = request.POST["enddate"]
         project.address = request.POST["address"]
         project.postcode = request.POST["postcode"]
+        project.latitude = 51
+        project.longitude = 50
         project.save()
 
         project = models.Project.objects.get(title=project.title)
