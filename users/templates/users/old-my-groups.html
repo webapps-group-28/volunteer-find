@@ -44,6 +44,11 @@
   article {
     width: 50% !important;
   }
+  input, select {
+    padding: 0.5em 1em !important;
+    line-height: 1.5em !important;
+    height: 3em !important;
+  }
   </style>
 
 </head>
@@ -104,12 +109,75 @@
                <div class="entry-text">
                	<div class="entry-header">
 
-               		<h1 class="entry-title"><a href="{% url 'view_group_profile' group_id=group.id %}">{{ group.name }}</a></h1>
+               		<div class="entry-meta">
+               			<span class="cat-links">
+               				<a href="#">{{ project.type }}</a>
+               			</span>
+               		</div>
+
+               		<h1 class="entry-title"><a href="{% url 'view_project' project_id=project.id %}">{{ group.name }}</a></h1>
 
                	</div>
 						<p>
-							{{ group.description }}
+							{{ project.description }}
 						</p>
+          <h6>Estimated hours of work</h6>
+        <p>
+          {{ project.duration }} hrs
+        </p>
+          <h6>Start date</h6>
+        <p>
+          {{ project.start_date }}
+        </p>
+        <h6>End date</h6>
+      <p>
+        {{ project.end_date }}
+      </p>
+               </div>
+
+        		</article> <!-- end article -->
+          {% endfor %}
+
+         </div> <!-- end brick-wrapper -->
+
+   	</div> <!-- end row -->
+    <div class="row masonry">
+          <h1>Projects that I'm organising</h1>
+   		<!-- brick-wrapper -->
+         <div class="bricks-wrapper">
+
+         	<div class="grid-sizer"></div>
+          {% for project in organise_projects %}
+         	<article class="brick entry format-standard animate-this">
+
+               <div class="entry-text">
+               	<div class="entry-header">
+
+               		<div class="entry-meta">
+               			<span class="cat-links">
+               				<a href="#">{{ project.type }}</a>
+               			</span>
+               		</div>
+
+               		<h1 class="entry-title"><a href="{% url 'view_project' project_id=project.id %}">{{ project.title }}</a></h1>
+
+               	</div>
+              <h6>Description</h6>
+						<p>
+							{{ project.description }}
+						</p>
+          <h6>Estimated hours of work</h6>
+        <p>
+          {{ project.duration }} hrs
+        </p>
+          <h6>Start date</h6>
+        <p>
+          {{ project.start_date }}
+        </p>
+        <h6>End date</h6>
+      <p>
+        {{ project.end_date }}
+      </p>
                </div>
 
         		</article> <!-- end article -->
