@@ -5,11 +5,12 @@ jobs:
       - image: circleci/python:3.6.4  # primary container for the build job
     steps:
       - checkout
-      # - run: sudo pip install django
-      # - run: sudo pip install gunicorn
-      # - run: sudo pip install Pillow
-      # - run: sudo pip install whitenoise
-      # - run: sudo pip install psycopg2
-      # - run: sudo pip install geopy
-      - run: sudo pip install -r requirements.txt
+      - run: sudo pip install django
+      - run: sudo pip install gunicorn
+      - run: sudo pip install Pillow
+      - run: sudo pip install whitenoise
+      - run: sudo pip install psycopg2
+      - run: sudo pip install geopy
+      - run: sudo pip install postcodes-io-api
+      - run: sudo pip install pgeocode
       - run: python manage.py test
