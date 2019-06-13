@@ -105,6 +105,15 @@
 						<p>{{ group.date_created }}</p>
             <h6>Number of members</h6>
             <p>{{ group.num_members }}</p>
+            {% if request.user.username == group.admin.username %}
+    <form action="/users/groups/addmember/" method="POST">
+      <h2>Add new members</h2>
+      {% csrf_token %}
+      <input type="text" name="username" class="full-width">
+      <input type="hidden" name="groupid" value="{{ group.id }}">
+      <input type="submit" value="Add user to this group" class="full-width">
+    </form>
+    {% endif %}
             <h2>Members</h2>
             <ul>
               {% for member in group.members %}
