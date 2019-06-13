@@ -44,7 +44,7 @@
     height: 3em !important;
   }
   a {
-    color: black;
+    color: black !important;
   }
   </style>
 
@@ -125,6 +125,7 @@
             </form>
             {% endif %}
             {% if project.organiser.username == request.user.username and not project.completed %}
+            <h2>Certify volunteers</h2>
             <p>As the organiser of this project, you can mark this project as completed, and choose how many hours to certify each volunteer who participated.</p>
             <button type="submit" form="certify" class="submit button-primary full-width-on-mobile">Certify volunteers</button>
             {% endif %}
