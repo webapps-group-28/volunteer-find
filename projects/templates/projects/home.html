@@ -109,7 +109,7 @@
 
 	                     <div class="form-field">
                          <h6>Maximum duration (hrs)</h6>
-	  						      <input name="maxduration" type="number" class="full-width" value="{{ maxduration }}>
+	  						      <input name="maxduration" type="number" class="full-width" value="{{ maxduration }}">
 	                     </div>
 
 	                     <div class="form-field">
@@ -118,11 +118,11 @@
 	                     </div>
                        <div class="form-field">
                          <h6>Latitude</h6>
-	  						      <input name="latitude" type="number" class="full-width" value="{{ latitude }}" step="any">
+	  						      <input name="latitude" type="hidden" class="full-width" value="{{ latitude }}">
 	                     </div>
                        <div class="form-field">
                          <h6>Longitude</h6>
-	  						      <input name="longitude" type="number" class="full-width" value="{{ longitude }}" step="any">
+	  						      <input name="longitude" type="hidden" class="full-width" value="{{ longitude }}">
 	                     </div>
 	                     <button type="submit" class="submit button-primary full-width-on-mobile">Search for projects</button>
 
@@ -137,33 +137,35 @@
 	  					   <fieldset>
 
 	                     <div class="form-field">
-                         <h6>Longitude</h6>
-	  						      <input name="title" type="text" class="full-width" placeholder="Title">
+                         <h6>Title</h6>
+	  						      <input name="title" type="text" class="full-width">
 	                     </div>
 
 	                     <div class="form-field">
-                         <h6>Longitude</h6>
-	  						      <input name="description" type="text" class="full-width" placeholder="Description">
+                         <h6>Description</h6>
+	  						      <textarea name="description" class="full-width"></textarea>
 	                     </div>
 
                        <div class="form-field">
-                         <h6>Longitude</h6>
-	  						      <input name="latitude" type="number" class="full-width" placeholder="Latitude" step="any">
+                         <h6>Estimated hours of work</h6>
+	  						      <input name="duration" type="number" class="full-width">
 	                     </div>
                        <div class="form-field">
-                         <h6>Longitude</h6>
-	  						      <input name="longitude" type="number" class="full-width" placeholder="Longitude" step="any">
+                         <h6>Start date</h6>
+	  						      <input name="startdate" type="date" class="full-width">
 	                     </div>
+                       <div class="form-field">
+                         <h6>End date</h6>
+	  						      <input name="enddate" type="date" class="full-width">
+	                     </div>
+                       <div class="form-field">
+                       <h6>Type of project</h6>
                        <select name="type">
-                         <h6>Longitude</h6>
                          <option value="Social">Social</option>
                          <option value="Educational">Educational</option>
                          <option value="Environmental">Environmental</option>
                        </select>
-                       <div class="form-field">
-                         <h6>Longitude</h6>
-	  						      <input name="duration" type="number" class="full-width" placeholder="Duration (hrs)">
-	                     </div>
+                     </div>
 	                     <button type="submit" class="submit button-primary full-width-on-mobile">Create new project</button>
 
 	  					   </fieldset>
