@@ -119,7 +119,7 @@
               {% csrf_token %}
               <input type="hidden" name="projectid" value="{{ project.id }}">
               {% for group in groups %}
-              <input type="checkbox" name="groups" value="{{ group.name }}"> <h6 style="display: inline-block; margin-right: 10px">{{ group.name }}</h6>
+              <input type="checkbox" name="groups" value="{{ group.name }}" style="margin: 0"> <h6 style="display: inline-block; margin-right: 10px">{{ group.name }}</h6>
               {% endfor %}<br>
               <button type="submit" class="submit button-primary full-width-on-mobile">Sign up selected groups</button>
             </form>
