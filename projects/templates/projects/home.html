@@ -198,7 +198,7 @@
                			</span>
                		</div>
 
-               		<h1 class="entry-title"><a href="single-standard.html">{{ project.title }}</a></h1>
+               		<h1 class="entry-title"><a href="{% url 'view_project' project_id=project.id %}">{{ project.title }}</a></h1>
 
                	</div>
               <h6>Description</h6>
@@ -207,7 +207,7 @@
 						</p>
             <h6>Distance from your location</h6>
           <p>
-            {{ project.distance }}
+            {{ project.distance }} km
           </p>
           <h6>Estimated hours of work</h6>
         <p>
