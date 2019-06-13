@@ -116,7 +116,8 @@
 
 	                     <div class="form-field">
                          <h6>Maximum distance (km)</h6>
-	  						      <input name="maxdistance" type="number" class="full-width" value="{{ maxdistance }}">
+	  						      <input name="maxdistance" type="range" class="full-width" value=" {{ maxdistance }}" id="maxdistance" oninput="maxdistancelabel.value = maxdistance.value" min="0" max="100">
+							      <output id="maxdistancelabel"> {{ maxdistance }}</output>
 	                     </div>
                        <div class="form-field">
 	  						      <input name="latitude" type="hidden" class="full-width" value="{{ latitude }}">
