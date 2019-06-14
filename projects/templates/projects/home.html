@@ -82,12 +82,13 @@
 	    background-color: #151515;
 	    cursor: pointer;
 	  }
-	  /* Start of code from https://stackoverflow.com/users/731314/gary, modified from https://github.com/Wildhoney/ngRangeSlider */
+	  /* Start of code adapted from https://stackoverflow.com/users/731314/gary, modified from https://github.com/Wildhoney/ngRangeSlider */
 	  section.range-slider {
 	    position: relative;
-	    width: 200px;
+	    width: 100%;
 	    height: 35px;
 	    text-align: center;
+	    margin-bottom: 30px;
 	}
 
 	section.range-slider input {
@@ -96,7 +97,7 @@
 	    overflow: hidden;
 	    left: 0;
 	    top: 15px;
-	    width: 200px;
+	    width: 100%;
 	    outline: none;
 	    height: 18px;
 	    margin: 0;
@@ -106,14 +107,14 @@
 	section.range-slider input::-webkit-slider-thumb {
 	    pointer-events: all;
 	    position: relative;
-	    z-index: 1;
+	    z-index: 999;
 	    outline: 0;
 	}
 
 	section.range-slider input::-moz-range-thumb {
 	    pointer-events: all;
 	    position: relative;
-	    z-index: 10;
+	    z-index: 999;
 	    -moz-appearance: none;
 	    width: 9px;
 	}
