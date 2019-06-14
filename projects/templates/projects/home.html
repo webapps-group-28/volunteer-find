@@ -34,21 +34,53 @@
 	<link rel="icon" href="/static/favicon.ico" type="image/x-icon">
 
   <style>
-  * { font-family: 'Karla', sans-serif !important; }
-  article h6 {
-    margin: 0;
-  }
-  article p {
-    margin-bottom: 15px;
-  }
-  article {
-    width: 50% !important;
-  }
-  input, select {
-    padding: 0.5em 1em !important;
-    line-height: 1.5em !important;
-    height: 3em !important;
-  }
+	  * { font-family: 'Karla', sans-serif !important; }
+	  article h6 {
+	    margin: 0;
+	  }
+	  article p {
+	    margin-bottom: 15px;
+	  }
+	  article {
+	    width: 50% !important;
+	  }
+	  input, select {
+	    padding: 0.5em 1em !important;
+	    line-height: 1.5em !important;
+	    height: 3em !important;
+	  }
+	  input[type=range] {
+	    -webkit-appearance: none;
+	    appearance: none;
+	    background: rgba(0, 0, 0, 0.1);
+	    height: 25px;
+	    border-radius: 2px;
+	  }
+	  input[type=range]::-webkit-slider-thumb {
+	    -webkit-appearance: none;
+	    appearance: none;
+	  }
+	  input[type=range]:focus {
+	    outline: none;
+	  }
+	  input[type=range]::-webkit-slider-thumb {
+	    -webkit-appearance: none;
+	    appearance: none;
+	    border-radius: 50%;
+	    width: 40px;
+	    height: 40px;
+	    background-color: #151515;
+	    cursor: pointer;
+	  }
+	  input[type=range]::-moz-range-thumb {
+	    -webkit-appearance: none;
+	    appearance: none;
+	    border-radius: 50%;
+	    width: 40px;
+	    height: 40px;
+	    background-color: #151515;
+	    cursor: pointer;
+	  }
   </style>
 
 </head>
