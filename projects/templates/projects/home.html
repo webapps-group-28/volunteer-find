@@ -234,7 +234,7 @@
 	  					   <fieldset>
 
 	                     <div class="form-field">
-                         <h6>Duration (hrs)</h6>
+                         <h6>How long should the project last? (hrs)</h6>
 				     			<section class="range-slider">
 	  						      <input name="minduration" type="range" class="full-width" value="{{ minduration }}" min="0" max="100">
 				     			      <input name="maxduration" type="range" class="full-width" value="{{ maxduration }}" min="0" max="100">
@@ -243,7 +243,7 @@
 	                     </div>
 
 	                     <div class="form-field">
-                         <h6>Maximum distance (km)</h6>
+                         <h6>What's the furthest away the project should be?</h6>
 	  						      <input name="maxdistance" type="range" class="full-width" value=" {{ maxdistance }}" id="maxdistance" oninput="maxdistancelabel.value = maxdistance.value" min="0" max="100">
 							      <output id="maxdistancelabel"> {{ maxdistance }}</output> km <br> <br>
 	                     </div>
@@ -286,7 +286,7 @@
 	                     </div>
 
                        <div class="form-field">
-                         <h6>Estimated hours of work</h6>
+                         <h6>Roughly how many hours of work do you expect a volunteer to do for this project?</h6>
 	  						      <input name="duration" type="range" class="full-width" required id="duration" oninput="durationlabel.value = duration.value" min="0" max="100" value="20">
 			       				      <output id="durationlabel">20</output> hours <br> <br>
 	                     </div>
