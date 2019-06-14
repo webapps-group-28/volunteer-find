@@ -107,14 +107,16 @@
 	section.range-slider input::-webkit-slider-thumb {
 	    pointer-events: all;
 	    position: relative;
-	    z-index: 999;
+	    z-index: 1;
+	    height: 40px;
 	    outline: 0;
 	}
 
 	section.range-slider input::-moz-range-thumb {
 	    pointer-events: all;
 	    position: relative;
-	    z-index: 999;
+	    z-index: 10;
+	    height: 40px;
 	    -moz-appearance: none;
 	    width: 9px;
 	}
@@ -130,8 +132,12 @@
 	    background: none transparent;
 	    border: 0;
 	}
-	  section.range-slider input[type=range]::-moz-focus-outer {
+        section.range-slider input[type=range]::-moz-focus-outer {
 	  border: 0;
+	}
+        .rangeValues, #hours {
+	  position: relative;
+	  top: 40px;
 	}
 	/* End of code from https://stackoverflow.com/users/731314/gary, modified from https://github.com/Wildhoney/ngRangeSlider */
   </style>
@@ -222,9 +228,9 @@
 	                     <div class="form-field">
                          <h6>Duration (hrs)</h6>
 				     			<section class="range-slider">
-				     			      <span class="rangeValues"></span>
 	  						      <input name="minduration" type="range" class="full-width" value="{{ minduration }}" min="0" max="100">
 				     			      <input name="maxduration" type="range" class="full-width" value="{{ maxduration }}" min="0" max="100">
+							      <span class="rangeValues"></span><span id="hours">hours</span>
 				     			</section>
 	                     </div>
 
