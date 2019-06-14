@@ -150,7 +150,7 @@
 	/* End of code from https://stackoverflow.com/users/731314/gary, modified from https://github.com/Wildhoney/ngRangeSlider */
   </style>
   <script>
-  	// The following script is the code of https://stackoverflow.com/users/731314/gary, modified from https://github.com/Wildhoney/ngRangeSlider 
+  	// The following script is the code of https://stackoverflow.com/users/731314/gary, modified from https://github.com/Wildhoney/ngRangeSlider
 	function getVals(){
 	  // Get slider values
 	  var parent = this.parentNode;
@@ -236,15 +236,15 @@
 	                     <div class="form-field">
                          <h6>How long should the project last?</h6>
 				     			<section class="range-slider">
-	  						      <input name="minduration" type="range" class="full-width" value="{{ minduration }}" min="0" max="100">
-				     			      <input name="maxduration" type="range" class="full-width" value="{{ maxduration }}" min="0" max="100">
+	  						      <input name="minduration" type="range" class="full-width" value="{% if minduration %} minduration {% else %} 30 {% endif %}" min="0" max="100">
+				     			      <input name="maxduration" type="range" class="full-width" value="{% if maxduration %} maxduration {% else %} 70 {% endif %}" min="0" max="100">
 							      <span class="rangeValues"></span><span id="hours"> hours</span>
 				     			</section>
 	                     </div>
 
 	                     <div class="form-field">
                          <h6>What's the furthest away the project should be?</h6>
-	  						      <input name="maxdistance" type="range" class="full-width" value=" {{ maxdistance }}" id="maxdistance" oninput="maxdistancelabel.value = maxdistance.value" min="0" max="100">
+	  						      <input name="maxdistance" type="range" class="full-width" value=" {% if maxdistance %} maxdistance {% else %} 40 {% endif %}" id="maxdistance" oninput="maxdistancelabel.value = maxdistance.value" min="0" max="100">
 							      <output id="maxdistancelabel"> {{ maxdistance }}</output> km <br> <br>
 	                     </div>
                        <div class="form-field">
@@ -406,6 +406,24 @@
    <script src="/static/js/plugins.js"></script>
    <script src="/static/js/jquery.appear.js"></script>
    <script src="/static/js/main.js"></script>
+   <script>
+     if (window.location.search.substr(1) == "") {
+       if ("geolocation" in navigator) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+           document.getElementsByName("latitude")[0].setAttribute("value", position.coords.latitude);
+           document.getElementsByName("longitude")[0].setAttribute("value", position.coords.longitude);
+         });
+       }
+     }
+     document.getElementById("findButton").addEventListener("click", function() {
+       document.getElementById("search").style.display = "block";
+       document.getElementById("create").style.display = "none";
+     });
+     document.getElementById("createButton").addEventListener("click", function() {
+       document.getElementById("search").style.display = "none";
+       document.getElementById("create").style.display = "block";
+     });
+   </script>
 
 </body>
 
