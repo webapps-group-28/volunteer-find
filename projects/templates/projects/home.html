@@ -102,6 +102,7 @@
 	    height: 18px;
 	    margin: 0;
 	    padding: 0;
+	    background: rgba(0, 0, 0, 0.05);
 	}
 
 	section.range-slider input::-webkit-slider-thumb {
@@ -110,6 +111,7 @@
 	    z-index: 1;
 	    height: 40px;
 	    outline: 0;
+	    border-radius: 0%;
 	}
 
 	section.range-slider input::-moz-range-thumb {
@@ -119,6 +121,7 @@
 	    height: 40px;
 	    -moz-appearance: none;
 	    width: 9px;
+	    border-radius: 0%;
 	}
 
 	section.range-slider input::-moz-range-track {
@@ -230,7 +233,7 @@
 				     			<section class="range-slider">
 	  						      <input name="minduration" type="range" class="full-width" value="{{ minduration }}" min="0" max="100">
 				     			      <input name="maxduration" type="range" class="full-width" value="{{ maxduration }}" min="0" max="100">
-							      <span class="rangeValues"></span><span id="hours">hours</span>
+							      <span class="rangeValues"></span><span id="hours"> hours</span>
 				     			</section>
 	                     </div>
 
