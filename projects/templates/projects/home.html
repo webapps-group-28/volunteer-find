@@ -236,15 +236,15 @@
 	                     <div class="form-field">
                          <h6>How long should the project last?</h6>
 				     			<section class="range-slider">
-	  						      <input name="minduration" type="range" class="full-width" value="{% if minduration %} minduration {% else %} 30 {% endif %}" min="0" max="100">
-				     			      <input name="maxduration" type="range" class="full-width" value="{% if maxduration %} maxduration {% else %} 70 {% endif %}" min="0" max="100">
+	  						      <input name="minduration" type="range" class="full-width" value="{% if minduration %}minduration{% else %}30{% endif %}" min="0" max="100">
+				     			      <input name="maxduration" type="range" class="full-width" value="{% if maxduration %}maxduration{% else %}70{% endif %}" min="0" max="100">
 							      <span class="rangeValues"></span><span id="hours"> hours</span>
 				     			</section>
 	                     </div>
 
 	                     <div class="form-field">
                          <h6>What's the furthest away the project should be?</h6>
-	  						      <input name="maxdistance" type="range" class="full-width" value=" {% if maxdistance %} maxdistance {% else %} 40 {% endif %}" id="maxdistance" oninput="maxdistancelabel.value = maxdistance.value" min="0" max="100">
+	  						      <input name="maxdistance" type="range" class="full-width" value=" {% if maxdistance %}maxdistance{% else %}40{% endif %}" id="maxdistance" oninput="maxdistancelabel.value = maxdistance.value" min="0" max="100">
 							      <output id="maxdistancelabel"> {{ maxdistance }}</output> km <br> <br>
 	                     </div>
                        <div class="form-field">
