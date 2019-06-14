@@ -245,7 +245,7 @@
 	                     <div class="form-field">
                          <h6>What's the furthest away the project should be?</h6>
 	  						      <input name="maxdistance" type="range" class="full-width" value="{% if maxdistance %}maxdistance{% else %}40{% endif %}" id="maxdistance" oninput="maxdistancelabel.value = maxdistance.value" min="0" max="100">
-							      <output id="maxdistancelabel"> {% if maxdistance %}maxdistance{% else %}40{% endif %}</output> km <br> <br>
+							      <output id="maxdistancelabel"> {% if maxdistance %}{{ maxdistance }}{% else %}40{% endif %}</output> km <br> <br>
 	                     </div>
                        <div class="form-field">
 	  						      <input name="latitude" type="hidden" class="full-width" value="{{ latitude }}">
