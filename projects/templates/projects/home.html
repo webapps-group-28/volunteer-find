@@ -53,8 +53,9 @@
 	    -webkit-appearance: none;
 	    appearance: none;
 	    background: rgba(0, 0, 0, 0.1);
-	    height: 25px;
+	    height: 25px !important;
 	    border-radius: 2px;
+	    margin-bottom: 5px;
 	  }
 	  input[type=range]::-webkit-slider-thumb {
 	    -webkit-appearance: none;
@@ -149,7 +150,7 @@
 	                     <div class="form-field">
                          <h6>Maximum distance (km)</h6>
 	  						      <input name="maxdistance" type="range" class="full-width" value=" {{ maxdistance }}" id="maxdistance" oninput="maxdistancelabel.value = maxdistance.value" min="0" max="100">
-							      <output id="maxdistancelabel"> {{ maxdistance }}</output>
+							      <output id="maxdistancelabel"> {{ maxdistance }}</output> <br>
 	                     </div>
                        <div class="form-field">
 	  						      <input name="latitude" type="hidden" class="full-width" value="{{ latitude }}">
