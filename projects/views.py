@@ -156,6 +156,15 @@ def homepage(request):
 
     return render(request, "projects/home.html", { "projects": output, "minduration": minduration, "maxduration": maxduration, "maxdistance": maxdistance, "latitude": latitude, "longitude": longitude })
 
+def project_count(request, project_id):
+    project = models.Project.objects.get(pk=int(project_id))
+    project.num_volunteers = 0
+    volunteerEntries = models.Volunteer.objects.all()
+    for entry in volunteerEntries:
+        if int(entry.project.id) == int(project_id):
+            project.num_volunteers += 1
+    return HttpResponse(str(project.num_volunteers))
+
 def create_project(request):
     if request.method == "GET":
         return render(request, "projects/create.html")

@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^certify/$', views.certify_project),
     url(r'^signupgroup/$', views.signup_group),
     url(r'^myprojects/$', views.my_projects),
+    url(r'^count/(?P<project_id>[\d]+)/$', views.project_count, name="project_count"),
     url(r'^(?P<project_id>[\d]+)/$', views.view_project, name="view_project")
 ]
