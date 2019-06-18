@@ -204,6 +204,7 @@
             <li><a href="/users/groups/create/">Create Group</a></li>
             <li><a href="{% url 'my_groups' username=request.user.username %}">My Groups</a></li>
             <li><a href="/projects/myprojects/">My Projects</a></li>
+            <li><a href="/projects/create/">Create Project</a></li>
             {% endif %}
             <li><a href="/users/leaderboard/">Leaderboard</a></li>
             {% if request.user.is_authenticated %}
@@ -259,57 +260,7 @@
   				      </form> <!-- end form -->
 
 				</div>
-        <div id="create">
-            <h1>Create A New Project</h1>
-						<form id="creationForm" method="post" action="/projects/create/">
-              {% csrf_token %}
-	  					   <fieldset>
 
-	                     <div class="form-field">
-                         <h6>Title</h6>
-	  						      <input name="title" type="text" class="full-width" required>
-	                     </div>
-
-	                     <div class="form-field">
-                         <h6>Description</h6>
-	  						      <textarea name="description" class="full-width" required></textarea>
-	                     </div>
-
-                       <div class="form-field">
-                         <h6>Address</h6>
-	  						      <textarea name="address" class="full-width" required></textarea>
-	                     </div>
-
-                       <div class="form-field">
-                         <h6>Postcode</h6>
-	  						      <input type="text" name="postcode" class="full-width" required>
-	                     </div>
-
-                       <div class="form-field">
-                         <h6>Roughly how many hours of work do you expect a volunteer to do for this project?</h6>
-	  						      <input name="duration" type="range" class="full-width" required id="duration" oninput="durationlabel.value = duration.value" min="0" max="100" value="20">
-			       				      <output id="durationlabel">20</output> hours <br> <br>
-	                     </div>
-                       <div class="form-field">
-                         <h6>Start date</h6>
-	  						      <input name="startdate" type="date" class="full-width" required>
-	                     </div>
-                       <div class="form-field">
-                         <h6>End date</h6>
-	  						      <input name="enddate" type="date" class="full-width" required>
-	                     </div>
-                       <div class="form-field">
-                       <h6>Type of project</h6>
-		       <input type="radio" name="type" value="Social"> Social
-		       <input type="radio" name="type" value="Educational"> Educational
-		       <input type="radio" name="type" value="Environmental"> Environmental
-                     </div>
-	                     <button type="submit" class="submit button-primary full-width-on-mobile">Create new project</button>
-
-	  					   </fieldset>
-  				      </form> <!-- end form -->
-
-				</div>
 
 
 			</div> <!-- end col-twelve -->

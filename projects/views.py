@@ -157,6 +157,8 @@ def homepage(request):
     return render(request, "projects/home.html", { "projects": output, "minduration": minduration, "maxduration": maxduration, "maxdistance": maxdistance, "latitude": latitude, "longitude": longitude })
 
 def create_project(request):
+    if request.method == "GET":
+        return render(request, "projects/create.html")
     if request.method == "POST":
         project = models.Project()
         project.title = request.POST["title"]

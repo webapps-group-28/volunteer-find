@@ -66,6 +66,7 @@
             <li><a href="/users/groups/create/">Create Group</a></li>
             <li><a href="{% url 'my_groups' username=request.user.username %}">My Groups</a></li>
             <li><a href="/projects/myprojects/">My Projects</a></li>
+            <li><a href="/projects/create/">Create Project</a></li>
             {% endif %}
             <li><a href="/users/leaderboard/">Leaderboard</a></li>
             {% if request.user.is_authenticated %}

@@ -7,7 +7,7 @@
    <!--- basic page needs
    ================================================== -->
    <meta charset="utf-8">
-	<title>Home</title>
+	<title>Create Project</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -35,15 +35,6 @@
 
   <style>
   * { font-family: 'Karla', sans-serif !important; }
-  article h6 {
-    margin: 0;
-  }
-  article p {
-    margin-bottom: 15px;
-  }
-  article {
-    width: 50% !important;
-  }
   input, select {
     padding: 0.5em 1em !important;
     line-height: 1.5em !important;
@@ -94,103 +85,69 @@
    </header> <!-- end header -->
 
 
+   <section id="content-wrap" class="site-page">
+   	<div class="row">
+   		<div class="col-twelve">
+
+        <div id="create">
+            <h1>Create A New Project</h1>
+						<form id="creationForm" method="post" action="/projects/create/">
+              {% csrf_token %}
+	  					   <fieldset>
+
+	                     <div class="form-field">
+                         <h6>Title</h6>
+	  						      <input name="title" type="text" class="full-width" required>
+	                     </div>
+
+	                     <div class="form-field">
+                         <h6>Description</h6>
+	  						      <textarea name="description" class="full-width" required></textarea>
+	                     </div>
+
+                       <div class="form-field">
+                         <h6>Address</h6>
+	  						      <textarea name="address" class="full-width" required></textarea>
+	                     </div>
+
+                       <div class="form-field">
+                         <h6>Postcode</h6>
+	  						      <input type="text" name="postcode" class="full-width" required>
+	                     </div>
+
+                       <div class="form-field">
+                         <h6>Roughly how many hours of work do you expect a volunteer to do for this project?</h6>
+	  						      <input name="duration" type="range" class="full-width" required id="duration" oninput="durationlabel.value = duration.value" min="0" max="100" value="20">
+			       				      <output id="durationlabel">20</output> hours <br> <br>
+	                     </div>
+                       <div class="form-field">
+                         <h6>Start date</h6>
+	  						      <input name="startdate" type="date" class="full-width" required>
+	                     </div>
+                       <div class="form-field">
+                         <h6>End date</h6>
+	  						      <input name="enddate" type="date" class="full-width" required>
+	                     </div>
+                       <div class="form-field">
+                       <h6>Type of project</h6>
+		       <input type="radio" name="type" value="Social"> Social
+		       <input type="radio" name="type" value="Educational"> Educational
+		       <input type="radio" name="type" value="Environmental"> Environmental
+                     </div>
+	                     <button type="submit" class="submit button-primary full-width-on-mobile">Create new project</button>
+
+	  					   </fieldset>
+  				      </form> <!-- end form -->
+
+				</div>
+
+
+
+			</div> <!-- end col-twelve -->
+   	</div> <!-- end row -->
+   </section> <!-- end content -->
    <!-- masonry
    ================================================== -->
-   <section id="bricks">
-
-   	<div class="row masonry">
-          <h1>Projects that I'm volunteering in</h1>
-   		<!-- brick-wrapper -->
-         <div class="bricks-wrapper">
-
-         	<div class="grid-sizer"></div>
-          {% for project in volunteer_projects %}
-         	<article class="brick entry format-standard animate-this">
-
-               <div class="entry-text">
-               	<div class="entry-header">
-
-               		<div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">{{ project.type }}</a>
-               			</span>
-               		</div>
-
-               		<h1 class="entry-title"><a href="{% url 'view_project' project_id=project.id %}">{{ project.title }}</a></h1>
-
-               	</div>
-              <h6>Description</h6>
-						<p>
-							{{ project.description }}
-						</p>
-          <h6>Estimated hours of work</h6>
-        <p>
-          {{ project.duration }} hrs
-        </p>
-          <h6>Start date</h6>
-        <p>
-          {{ project.start_date }}
-        </p>
-        <h6>End date</h6>
-      <p>
-        {{ project.end_date }}
-      </p>
-               </div>
-
-        		</article> <!-- end article -->
-          {% endfor %}
-
-         </div> <!-- end brick-wrapper -->
-
-   	</div> <!-- end row -->
-    <div class="row masonry">
-          <h1>Projects that I'm organising</h1>
-   		<!-- brick-wrapper -->
-         <div class="bricks-wrapper">
-
-         	<div class="grid-sizer"></div>
-          {% for project in organise_projects %}
-         	<article class="brick entry format-standard animate-this">
-
-               <div class="entry-text">
-               	<div class="entry-header">
-
-               		<div class="entry-meta">
-               			<span class="cat-links">
-               				<a href="#">{{ project.type }}</a>
-               			</span>
-               		</div>
-
-               		<h1 class="entry-title"><a href="{% url 'view_project' project_id=project.id %}">{{ project.title }}</a></h1>
-
-               	</div>
-              <h6>Description</h6>
-						<p>
-							{{ project.description }}
-						</p>
-          <h6>Estimated hours of work</h6>
-        <p>
-          {{ project.duration }} hrs
-        </p>
-          <h6>Start date</h6>
-        <p>
-          {{ project.start_date }}
-        </p>
-        <h6>End date</h6>
-      <p>
-        {{ project.end_date }}
-      </p>
-               </div>
-
-        		</article> <!-- end article -->
-          {% endfor %}
-
-         </div> <!-- end brick-wrapper -->
-
-   	</div> <!-- end row -->
-
-   </section> <!-- end bricks -->
-
 
    <!-- footer
    ================================================== -->
