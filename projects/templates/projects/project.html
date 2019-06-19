@@ -117,7 +117,7 @@
 						<p>{{ project.end_date }}</p>
             <h6>Estimated hours of work</h6>
 						<p>{{ project.duration }} hrs</p>
-            <h4>{{ project.num_volunteers }} volunteers have already joined this project</h4>
+            <h4 id="numVolunteers">{{ project.num_volunteers }} volunteers have already joined this project</h4>
             {% if request.user.is_authenticated %}
             {% if not project.signed_up %}
             <form action="/projects/signup/" method="POST">
@@ -158,6 +158,28 @@
                 })
               });
             </script>
+	    <script type="text/javascript">
+	    window.onload = function() {
+	    var num_volunteers = {{ project.num_volunteers }};
+	    window.setInterval(function(){
+	     var request = new XMLHttpRequest();
+	     request.onreadystatechange = function() {
+		 if (this.readyState == 4 && this.status == 200) {
+		     if (parseInt(request.responseText) > num_volunteers) {
+			 num_volunteers = parseInt(request.responseText);
+			 document.getElementById("numVolunteers").innerHTML = num_volunteers + " volunteers have already joined this project";
+			 var notice = document.createElement("DIV");
+			 notice.innerHTML = "A new volunteer has just signed up!";
+			 notice.style = "position: fixed; width: 60%; top: 0%; left: 20%; color: #d82424; background: #fff; border: 2px solid #d82424; border-radius: 20px; padding: 10px;";
+			 document.getElementById("top").appendChild(notice);
+		     }
+		 }
+	     };
+	     request.open("GET", "/projects/count/{{ project.id }}/", true);
+	     request.send();
+	    }, 5000);
+	    };
+	    </script>
             {% if project.organiser.username == request.user.username and not project.completed %}
             <h2>Certify volunteers</h2>
             <p>As the organiser of this project, you can mark this project as completed, and choose how many hours to certify each volunteer who participated.</p>
