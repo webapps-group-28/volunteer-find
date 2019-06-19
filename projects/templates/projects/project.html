@@ -165,11 +165,11 @@
 	     request.onreadstatechange = function() {
 		 if (this.readyState == 4 && this.status == 200) {
 		     if (parseInt(request.responseText) > parseInt( {{ project.num_volunteers }})) {
-			 alert("There are now " + {{ project.num_volunteers }} + " volunteers!");
+			 alert("There are now {{ project.num_volunteers }} volunteers!");
 		     }
 		 }
 	     };
-	     request.open("GET", "/projects/count/" + {{ project.id }} + "/", true);
+	     request.open("GET", "/projects/count/{{ project.id }}/", true);
 	     request.send();
 	    }, 5000);
 	    };
