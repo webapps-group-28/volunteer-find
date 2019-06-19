@@ -160,12 +160,14 @@
             </script>
 	    <script type="text/javascript">
 	    window.onload = function() {
+	    var num_volunteers = {{ project.num_volunteers }};
 	    window.setInterval(function(){
 	     var request = new XMLHttpRequest();
 	     request.onreadystatechange = function() {
 		 if (this.readyState == 4 && this.status == 200) {
-		     if (parseInt(request.responseText) > {{ project.num_volunteers }}) {
+		     if (parseInt(request.responseText) > num_volunteers) {
 			 alert("There are new volunteers!");
+			 num_volunteers = parseInt(request.responseText);
 		     }
 		 }
 	     };
