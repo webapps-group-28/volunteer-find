@@ -160,9 +160,16 @@
             </script>
 	    <script type="text/javascript">
 	      window.onload = function() {
-		    window.setInterval(function(){
-			    alert("Test");
-		    }, 5000);
+	      window.setInterval(function(){
+	       var request = new XMLHttpRequest();
+	       request.onreadstatechange = function() {
+		   if (this.readyState == 4 && this.status == 200) {
+		       if (parseInt(request.responseText) > parseInt( {{ project.num_volunteers }})) {
+			   alert("There are now " + {{ project.num_volunteers }} + " volunteers!");
+		       }
+		   }
+	       };
+	      }, 5000);
 	      };
 	    </script>
             {% if project.organiser.username == request.user.username and not project.completed %}
