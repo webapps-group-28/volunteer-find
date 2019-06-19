@@ -169,9 +169,9 @@
 		     }
 		 }
 	     };
+	     request.open("GET", "/projects/count/" + {{ project.id }} + "/", true);
+	     request.send();
 	    }, 5000);
-	    request.open("GET", "/projects/count/" + {{ project.id }} + "/", true);
-	    request.send();
 	    };
 	    </script>
             {% if project.organiser.username == request.user.username and not project.completed %}
