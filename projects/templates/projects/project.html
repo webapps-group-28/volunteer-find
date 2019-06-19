@@ -166,9 +166,12 @@
 	     request.onreadystatechange = function() {
 		 if (this.readyState == 4 && this.status == 200) {
 		     if (parseInt(request.responseText) > num_volunteers) {
-			 document.getElementById("numVolunteers").innerHTML = request.responseText + " volunteers have already joined this project";
-			 document.write('<div style="position: fixed; width: 60%; top: 0%; left: 20%; color: #d82424; background: #fff; border: 2px solid #d82424; border-radius: 20px; padding: 10px;">A new volunteer has just signed up!</div>');
 			 num_volunteers = parseInt(request.responseText);
+			 document.getElementById("numVolunteers").innerHTML = num_volunteers + " volunteers have already joined this project";
+			 var notice = document.createElement("DIV");
+			 notice.innerHTML = "A new volunteer has just signed up!";
+			 notice.style = "position: fixed; width: 60%; top: 0%; left: 20%; color: #d82424; background: #fff; border: 2px solid #d82424; border-radius: 20px; padding: 10px;";
+			 document.getElementById("top").appendChild(notice);
 		     }
 		 }
 	     };
