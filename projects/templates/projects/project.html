@@ -158,6 +158,13 @@
                 })
               });
             </script>
+	    <script type="text/javascript">
+	      window.onload = function() {
+		    window.setInterval(function(){
+			    alert("Test");
+		    }, 5000);
+	      };
+	    </script>
             {% if project.organiser.username == request.user.username and not project.completed %}
             <h2>Certify volunteers</h2>
             <p>As the organiser of this project, you can mark this project as completed, and choose how many hours to certify each volunteer who participated.</p>
